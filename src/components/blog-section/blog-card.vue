@@ -1,0 +1,80 @@
+<template>
+    <div class="container">
+        <div class="img_container">
+            <img :src="roomList[0].primary_image.crop" v-if="roomList.length"/>
+        </div>
+        <div class="content_container">
+            <div class="title">Blog title</div>
+            <div class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </div>
+            <div class="button-div">Read more</div>
+        </div>
+    </div>
+</template>
+
+<script>
+import axios from 'axios'
+export default   {
+        data() {
+        return{
+            roomList: []
+        }
+    },
+    mounted() {
+  axios.get('https://www.hilltop.ge/api/room-types/')
+  .then((response) => {
+    // handle success
+    this.roomList = response.data
+    //rooms.primary_image
+    // console.log(this.roomList)
+    // console.log(this.roomList);
+  })
+  }
+}
+</script>
+<style scoped>
+.button-div{
+    line-height: 24px;
+    font-size: 18px;
+    margin-top: 20px;
+    float: right;
+    border-bottom: 1px solid #56D9D4;
+}
+.content{
+    line-height: 27px;
+    font-size: 20px;
+}
+.title{
+    line-height: 40px;
+    font-size: 30px;
+    margin-bottom: 35px;
+}
+.container{
+    width: 50%;
+    height: 304px;
+    padding-left: 50px;
+
+    display: flex;
+    position: relative;
+}
+.img_container{
+    width: 50%;
+    height: 100%;
+    z-index: 10;
+    position: relative;
+}
+.img_container img{
+    width: 100%;
+    height: 100%;
+}
+.content_container{
+    padding: 20px;
+    right: 10%;
+    position: relative;
+    border-right: 1px solid #56D9D4;
+    height: 241px;
+    width: 441px;
+    align-self: center;
+    z-index: 20;
+    background-color: white;
+}
+</style>
