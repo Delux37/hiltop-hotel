@@ -1,0 +1,106 @@
+<template>
+    <div class="content-box">
+        <div class="left-div">
+            <div class="img-div">
+                <img :src="testObj.img"/>
+            </div>
+        </div>
+        <div class="content-div">
+            <div class="title"><h1>{{ testObj.roomType }}</h1></div>
+            <div class="amenities">
+                <ul>
+                    <li>Price: {{ testObj.price }}</li>
+                    <li>Person:  {{ testObj.person }}</li>
+                </ul>
+            </div>
+            <div class="description"><p>{{ testObj.description }}</p></div>
+            <div class="viev-gallery-button-container"><h2 class="view-gallery-button">View more</h2></div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            testObj: {
+                roomType: 'Room Type One',
+                price: '200$',
+                person: '5',
+                description: 'this is rly cool rd ',
+                img: 'http://via.placeholder.com/366x234'
+            }
+        }
+    }
+}
+</script>
+
+<style scoped>
+.content-box{
+    width: 50%;
+    box-shadow: 0 -5px 5px -5px #333;
+    /* -moz-box-shadow: 0px 3px 8px rgb(100,100,100);
+    -webkit-box-shadow: 0px 3px 8px rgb(100,100,100);
+    box-shadow: 0px 3px 8px rgb(100,100,100); */
+}
+.content-div{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    float: left;
+    padding-left: 120px;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    border-right: 1px solid rgb(214, 214, 214);
+}
+.left-div{
+    width: 35%;
+    float: left;
+    height: 100%;
+}
+.img-div{
+    height: 234px;
+    width: 366px;
+    margin-top: 71px;
+    margin-left: 50px;
+}
+.img-div img{
+    width: 100%;
+}
+
+.title{
+    margin-top: 31px;
+}
+.title h1{
+    color: #464646;
+    font-size: 30px;
+}
+.amenities{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin: 32px 30px;
+    padding-left: 6px;
+    border-left: 1px solid #56D9D4;
+}
+.amenities ul{
+    list-style: none;
+    font-size: 22px;
+}
+.description p{
+    font-size: 20px;
+}
+.viev-gallery-button-container{
+    margin-top: 30px;
+    margin-bottom: 34px;
+    width: 17%;
+}
+.viev-gallery-button-container h2{
+    font-size: 20px;
+    color: #464646;
+    opacity: 0.7;
+}
+.viev-gallery-button-container h2:hover{
+    opacity: 1;
+    border-bottom: 1px solid #56D9D4;
+    cursor: pointer;
+}
+</style>
