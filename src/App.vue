@@ -2,18 +2,25 @@
   <div>
     <header-page></header-page>
     <room-types></room-types>
+    <additional-section></additional-section>
   </div>
 </template>
 
 <script>
-import headerPage from './components/headerPage.vue'
+import headerPage from './components//header/headerPage.vue'
 import roomTypes from './components/room/roomTypes.vue'
+import additionalSection from './components/restaurant/additional-section.vue'
+
 export default {
   components: {
     headerPage,
-    roomTypes
-  }
-
+    roomTypes,
+    additionalSection
+  },
+  data() {
+    return {
+    }
+  },
 }
 </script>
 <style>

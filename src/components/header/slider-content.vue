@@ -16,7 +16,6 @@ export default {
     position: absolute;
     top: 75%;
     margin-left: 50px;
-    border: 2px solid green;
 }
 h1{
     font-size: 50px;

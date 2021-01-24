@@ -2,15 +2,15 @@
     <div class="content-box">
         <div class="left-div">
             <div class="img-div">
-                <img :src="testObj.img"/>
+                <img :src="primaryImage.crop"/>
             </div>
         </div>
         <div class="content-div">
-            <div class="title"><h1>{{ testObj.roomType }}</h1></div>
+            <div class="title"><h1>{{ title }}</h1></div>
             <div class="amenities">
                 <ul>
-                    <li>Price: {{ testObj.price }}</li>
-                    <li>Person:  {{ testObj.person }}</li>
+                    <li>Price: ${{ price }}</li>
+                    <li>Person: {{ humanCapacity }}</li>
                 </ul>
             </div>
             <div class="description"><p>{{ testObj.description }}</p></div>
@@ -21,6 +21,7 @@
 
 <script>
 export default {
+    props: ['title', 'humanCapacity', 'price', 'primaryImage'],
     data() {
         return {
             testObj: {
@@ -38,7 +39,6 @@ export default {
 <style scoped>
 .content-box{
     width: 50%;
-    box-shadow: 0 -5px 5px -5px #333;
     /* -moz-box-shadow: 0px 3px 8px rgb(100,100,100);
     -webkit-box-shadow: 0px 3px 8px rgb(100,100,100);
     box-shadow: 0px 3px 8px rgb(100,100,100); */
