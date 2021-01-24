@@ -91,7 +91,7 @@ export default {
 .viev-gallery-button-container{
     margin-top: 30px;
     margin-bottom: 34px;
-    width: 17%;
+    width: 20%;
 }
 .viev-gallery-button-container h2{
     font-size: 20px;

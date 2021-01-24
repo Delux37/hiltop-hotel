@@ -33,7 +33,7 @@ export default {
   .then((response) => {
     // handle success
     this.roomList = response.data
-    console.log(this.roomList)
+    // console.log(this.roomList)
     // console.log(this.roomList);
   })
   }

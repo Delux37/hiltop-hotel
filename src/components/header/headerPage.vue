@@ -24,7 +24,7 @@ export default {
   .then((response) => {
     // handle success
     this.sliderContant = response.data
-    console.log(this.sliderContant)
+    // console.log(this.sliderContant)
     // console.log(this.roomList);
   })
   }

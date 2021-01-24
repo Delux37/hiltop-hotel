@@ -3,6 +3,8 @@
     <header-page></header-page>
     <room-types></room-types>
     <additional-section></additional-section>
+    <about-us></about-us>
+    <blog-content></blog-content>
   </div>
 </template>
 
@@ -10,12 +12,16 @@
 import headerPage from './components//header/headerPage.vue'
 import roomTypes from './components/room/roomTypes.vue'
 import additionalSection from './components/restaurant/additional-section.vue'
+import aboutUs from './components/about/about-us.vue'
+import blogContent from './components/blog-section/blogContent.vue'
 
 export default {
   components: {
     headerPage,
     roomTypes,
-    additionalSection
+    additionalSection,
+    aboutUs,
+    blogContent
   },
   data() {
     return {
