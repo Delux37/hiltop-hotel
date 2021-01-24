@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <style>
@@ -13,7 +15,6 @@ html{
     color: #555;
     font-family: 'Lato',  'Arial', sans-serif;
     font-weight: 300;
-    font-size: 50px;
     text-rendering: optimizeLegibility;
 }
 </style>
