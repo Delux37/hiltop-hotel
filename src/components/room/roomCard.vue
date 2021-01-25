@@ -84,9 +84,11 @@ export default {
 .amenities ul{
     list-style: none;
     font-size: 22px;
+    font-family: 'Larsseit';
 }
 .description p{
     font-size: 20px;
+    font-family: 'Larsseit';
 }
 .viev-gallery-button-container{
     margin-top: 30px;
@@ -96,6 +98,7 @@ export default {
 .viev-gallery-button-container h2{
     font-size: 20px;
     color: #464646;
+    font-family: 'Larsseit';
     opacity: 0.7;
 }
 .viev-gallery-button-container h2:hover{

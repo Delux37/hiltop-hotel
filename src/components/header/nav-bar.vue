@@ -26,6 +26,7 @@ nav{
     /* position: absolute; */
 }
 .main-nav li {
+    font-family: 'Larsseit';
     display: inline-block;
     font-size: 22px;
     margin-left: 30px;
@@ -51,6 +52,8 @@ nav{
     overflow: hidden;
 }
 #main-text{
+    font-family: 'BigCaslonMedium';
+    letter-spacing: 3px;
     float: left;
     font-size: 35px;
     color: white;

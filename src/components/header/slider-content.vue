@@ -20,11 +20,16 @@ export default {
     overflow: hidden;
 }
 h1{
+    font-family: 'BigCaslonMedium';
+    letter-spacing: 3px;
     font-size: 50px;
     color: #fff;
     margin-bottom: 22px;
 }
 p {
+    font-family: 'BigCaslonMedium';
+    letter-spacing: 3px;
+    word-spacing: 5px;
     font-size: 30px;
     color: #fff;
 }

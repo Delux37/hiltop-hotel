@@ -15,8 +15,10 @@
     height: 53px;
     font-size: 40px;
     text-align: center;
+    font-family: 'BigCaslonMedium';
 }
 .content{
+    font-family: 'Larsseit';
     text-align: center;
     width: 83%;
     margin: 15px auto;

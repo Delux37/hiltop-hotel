@@ -51,6 +51,7 @@ section{
 #header h1{
     font-size: 40px;
     color: #464646;
+    font-family: 'Larsseit';
 }
 .test ul{
     display: flex;

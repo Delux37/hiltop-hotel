@@ -63,6 +63,7 @@ z-index: 20;
     line-height: 27px;
     font-size: 20px;
     color: #464646;
+    font-family: 'Larsseit';
 }
 .header-text{
     width: 65%;
@@ -71,6 +72,7 @@ z-index: 20;
     justify-content: center;
 }
 .header-text h1{
+    font-family: 'BigCaslonMedium';
     font-size: 50px;
     color: #464646;
 }

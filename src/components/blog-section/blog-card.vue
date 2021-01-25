@@ -42,11 +42,13 @@ export default   {
 .content{
     line-height: 27px;
     font-size: 20px;
+    font-family: 'Larsseit';
 }
 .title{
     line-height: 40px;
     font-size: 30px;
     margin-bottom: 35px;
+    font-family: 'BigCaslonMedium';
 }
 .container{
     width: 50%;
