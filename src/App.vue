@@ -24,7 +24,7 @@ export default {
     additionalSection,
     aboutUs,
     blogContent,
-    contactSection
+    contactSection,
   },
   data() {
     return {

@@ -3,8 +3,9 @@
         <div class="row"
             :class="classObject"
         >
-            <h1 id="main-text">Hiltop Bakuriani</h1>
-            <ul class="main-nav ">
+            <h1 class="main-text" :class="{movingNavMainText: isActive}">Hiltop Bakuriani</h1>
+            <ul class="main-nav"
+                :class="{active: isActive}">
                 <li>Home</li>
                 <li>Room Types</li>
                 <li>Restoraunt</li>
@@ -20,11 +21,18 @@
         </div>
     </nav>
 </template>
-
-<style scoped>
-nav{
-    /* position: absolute; */
+<script>
+export default {
+    props: ['isActive'],
+    data() {
+        return {
+            // isActive: false
+        }
+    }
 }
+</script>
+<style scoped>
+
 .main-nav li {
     font-family: 'Larsseit';
     display: inline-block;
@@ -32,6 +40,12 @@ nav{
     margin-left: 30px;
     line-height: 30px;
     color: #FFF;    
+}
+.movingNavMainText h1{
+    color: black;
+}
+.active li{
+    color: black;
 }
 .main-nav li:hover {
     border-bottom: 2px solid #56D9D4;
@@ -46,12 +60,10 @@ nav{
 }
 .row{
     width: 96%;
-    height: 47px;
-    /* height: 100px; */
     margin: 0 auto;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
-#main-text{
+.main-text{
     font-family: 'BigCaslonMedium';
     letter-spacing: 3px;
     float: left;

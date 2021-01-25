@@ -3,7 +3,7 @@
         <slot></slot>
 
         <img @click="next" class="next" src="../../assets/arrow.svg"/>
-        <img  @click="prev" class="prev" src="../../assets/arrow.svg"/>
+        <img @click="prev" class="prev" src="../../assets/arrow.svg"/>
     </div>
 </template>
 <script>
@@ -39,7 +39,8 @@ img{
     border: none;
 }
 img:hover{
-    
+    opacity: 1;
+    cursor: pointer;
 }
 .next{
 right: 0;

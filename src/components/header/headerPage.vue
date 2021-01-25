@@ -1,6 +1,7 @@
 <template>
     <carousel class="cover" @next="next" @prev="prev">
         <nav-bar class="header"></nav-bar>
+        <nav-bar class="test" isActive="true"></nav-bar>
         <carousel-slide v-for="(slides,index) in sliderContant"
         :index="index"
         :key="slides"
@@ -12,8 +13,6 @@
         :subTitle="slides.sub_title"
         ></sliderContent>
         </carousel-slide>
-        
-
     </carousel>
 </template>
 
@@ -72,12 +71,9 @@ export default {
 
 <style scoped>
 .cover img{
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     opacity: 0.5;
-}
-.test{
-    z-index: 10;
 }
 .header{
     padding-top: 20px;
@@ -85,6 +81,17 @@ export default {
     position: absolute;
     width: 100%;
 }
+.test{
+    position: fixed;
+    width: 100%;
+    padding-top: 20px;
+    opacity: 1;
+    z-index: -1;
+    background-color: white;
+    border-bottom: 1px solid #56D9D4;
+    
+}
+
 .cover{
     background-size: cover;
     background-position: center;
@@ -96,6 +103,6 @@ export default {
     overflow: hidden;
     /* opacity: 0.5; */
     background-color: #5C5959;
-    z-index: 0;
+    z-index: 2;
 }
 </style>

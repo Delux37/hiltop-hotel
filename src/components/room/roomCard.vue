@@ -38,7 +38,9 @@ export default {
 
 <style scoped>
 .content-box{
+    /* width: 42%; */
     width: 50%;
+    padding-right: 3%;
     /* -moz-box-shadow: 0px 3px 8px rgb(100,100,100);
     -webkit-box-shadow: 0px 3px 8px rgb(100,100,100);
     box-shadow: 0px 3px 8px rgb(100,100,100); */
@@ -48,9 +50,10 @@ export default {
     flex-direction: column;
     width: 65%;
     float: left;
-    padding-left: 120px;
+    padding-left: 14%;
     border-bottom: 1px solid rgb(214, 214, 214);
     border-right: 1px solid rgb(214, 214, 214);
+
 }
 .left-div{
     width: 35%;
@@ -58,8 +61,10 @@ export default {
     height: 100%;
 }
 .img-div{
-    height: 234px;
-    width: 366px;
+    /* height: 234px;//21
+    width: 366px;//19 */
+    /* height: 21%; */
+    width: 19vw;
     margin-top: 71px;
     margin-left: 50px;
 }
@@ -72,7 +77,8 @@ export default {
 }
 .title h1{
     color: #464646;
-    font-size: 30px;
+    /* font-size: 30px; */
+    font-size: 1.8rem;
 }
 .amenities{
     padding-top: 4px;
@@ -87,7 +93,8 @@ export default {
     font-family: 'Larsseit';
 }
 .description p{
-    font-size: 20px;
+    /* font-size: 20px; */
+    font-size: 1.2em;
     font-family: 'Larsseit';
 }
 .viev-gallery-button-container{
