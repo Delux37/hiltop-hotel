@@ -1,13 +1,13 @@
 <template>
     <div class="slider-text-box">
-        <h1>Slider title</h1>
-        <p>Lorem impsum lbalbal <br> dummy tesdsajdkajdkajk</p>
+        <h1>{{title}}</h1>
+        <p>{{subTitle}}</p>
     </div>
 </template>
 
 <script>
 export default {
-    
+    props:['title', 'subTitle']
 }
 </script>
 
@@ -16,6 +16,8 @@ export default {
     position: absolute;
     top: 75%;
     margin-left: 50px;
+    width: 35%;
+    overflow: hidden;
 }
 h1{
     font-size: 50px;

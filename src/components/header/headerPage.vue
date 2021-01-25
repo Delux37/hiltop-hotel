@@ -7,12 +7,13 @@
         :visibleSlide="visibleSlide"
         >
         <img :src="slides.picture.full_size"/>
+        <sliderContent 
+        :title="slides.title"
+        :subTitle="slides.sub_title"
+        ></sliderContent>
         </carousel-slide>
         
-        <sliderContent 
-        class="test"
-        
-        ></sliderContent>
+
     </carousel>
 </template>
 

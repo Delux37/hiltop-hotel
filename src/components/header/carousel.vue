@@ -2,8 +2,8 @@
     <div class="carousel">
         <slot></slot>
 
-        <button @click="next" class="next">Next</button>
-        <button @click="prev" class="prev">Prev</button>
+        <img @click="next" class="next" src="../../assets/arrow.svg"/>
+        <img  @click="prev" class="prev" src="../../assets/arrow.svg"/>
     </div>
 </template>
 <script>
@@ -25,21 +25,27 @@ export default {
     height: 350px;
     overflow: hidden;
 } */
-button{
+button,
+img{
     position: absolute;
-    height: 40px;
+    height: 60px;
     width: 50px;
     top: 50%;
     /* top: calc(50% -20px); */
-    background-color: rgba(0,0,0,0.8);
-    color: white;
+    /* background-color: rgba(0,0,0,0.8); */
+    /* color: white; */
+    opacity: 0.5;
     border: 2px solid red;
     border: none;
+}
+img:hover{
+    
 }
 .next{
 right: 0;
 }
 .prev{
 left: 0;
+transform: scaleX(-1);
 }
 </style>
