@@ -5,6 +5,7 @@
     <additional-section></additional-section>
     <about-us></about-us>
     <blog-content></blog-content>
+    <contact-section></contact-section>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import roomTypes from './components/room/roomTypes.vue'
 import additionalSection from './components/restaurant/additional-section.vue'
 import aboutUs from './components/about/about-us.vue'
 import blogContent from './components/blog-section/blogContent.vue'
+import contactSection from './components/contact-section/contact-section.vue'
 
 export default {
   components: {
@@ -21,7 +23,8 @@ export default {
     roomTypes,
     additionalSection,
     aboutUs,
-    blogContent
+    blogContent,
+    contactSection
   },
   data() {
     return {
@@ -38,7 +41,7 @@ export default {
 html{
     background-color: #FFF;
     color: #555;
-    font-family: 'Lato',  'Arial', sans-serif;
+    font-family: 'Lato', 'Arial', sans-serif;
     font-weight: 300;
     text-rendering: optimizeLegibility;
 }

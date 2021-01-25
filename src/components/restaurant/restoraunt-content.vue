@@ -51,7 +51,7 @@ border-left: 1px solid green;
 border-radius: 5px;
 position: relative;
 width: 40%;
-max-height: 50rem;
+max-height: 30rem;
 align-self: center;
 padding: 2rem;
 left: 2%;
