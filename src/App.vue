@@ -33,6 +33,24 @@ export default {
 }
 </script>
 <style>
+@font-face {
+    font-family: 'Larsseit';
+    src: url('fonts/Larsseit.eot');
+    src: local('Larsseit'),
+        url('fonts/Larsseit.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Larsseit.woff2') format('woff2'),
+        url('fonts/Larsseit.woff') format('woff'),
+        url('fonts/Larsseit.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BigCaslonMedium';
+    src: local('BigCaslon'),
+        url('fonts/BigCaslonMedium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 *{
     margin: 0;
     padding: 0;
@@ -41,8 +59,9 @@ export default {
 html{
     background-color: #FFF;
     color: #555;
-    font-family: 'Lato', 'Arial', sans-serif;
+    font-family:  'Lato', 'Arial', sans-serif;
     font-weight: 300;
     text-rendering: optimizeLegibility;
 }
+
 </style>
