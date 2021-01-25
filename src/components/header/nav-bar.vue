@@ -1,8 +1,10 @@
 <template>
     <nav>
-        <div class="row">
+        <div class="row"
+            :class="classObject"
+        >
             <h1 id="main-text">Hiltop Bakuriani</h1>
-            <ul class="main-nav">
+            <ul class="main-nav ">
                 <li>Home</li>
                 <li>Room Types</li>
                 <li>Restoraunt</li>
@@ -19,13 +21,10 @@
     </nav>
 </template>
 
-<script>
-export default {
-    
-}
-</script>
-
 <style scoped>
+nav{
+    /* position: absolute; */
+}
 .main-nav li {
     display: inline-block;
     font-size: 22px;
@@ -47,6 +46,7 @@ export default {
 .row{
     width: 96%;
     height: 47px;
+    /* height: 100px; */
     margin: 0 auto;
     overflow: hidden;
 }
