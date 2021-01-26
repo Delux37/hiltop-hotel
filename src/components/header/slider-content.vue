@@ -14,9 +14,12 @@ export default {
 <style scoped>
 .slider-text-box{
     position: absolute;
-    top: 75%;
-    margin-left: 50px;
-    width: 35%;
+    /* top: 75%; */
+    bottom: 5%;
+    /* margin-left: 50px; */
+    margin: 50px;
+    /* width: 35%; */
+    max-width: 600px;
     overflow: hidden;
 }
 h1{

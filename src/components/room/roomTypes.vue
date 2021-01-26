@@ -40,6 +40,7 @@ export default {
 <style scoped>
 section{
     margin-top: 115px;
+    z-index: -5;
 }
 #header{
     height: 53px;

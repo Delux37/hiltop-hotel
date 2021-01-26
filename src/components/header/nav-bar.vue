@@ -23,12 +23,8 @@
 </template>
 <script>
 export default {
-    props: ['isActive'],
-    data() {
-        return {
-            // isActive: false
-        }
-    }
+    props: ['isActive']
+
 }
 </script>
 <style scoped>
@@ -40,14 +36,9 @@ export default {
     margin-left: 30px;
     line-height: 30px;
     color: #FFF;    
+    border-bottom: 2px solid rgba(105, 88, 88, 0);
 }
-.movingNavMainText h1{
-    color: black;
-}
-.active li{
-    color: black;
-}
-.main-nav li:hover {
+.main-nav li:hover{
     border-bottom: 2px solid #56D9D4;
     cursor: pointer;
 }
@@ -61,7 +52,7 @@ export default {
 .row{
     width: 96%;
     margin: 0 auto;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 .main-text{
     font-family: 'BigCaslonMedium';
@@ -71,5 +62,17 @@ export default {
     color: white;
     margin-left: 20px;
 }
+.movingNavMainText{
+    color: black;
+}
+.active li{
+    color: black;
+}
 
+@media (max-width: 1200px)
+{
+    .row{
+        display: none;
+    }
+}
 </style>

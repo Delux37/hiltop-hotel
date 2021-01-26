@@ -1,7 +1,8 @@
 <template>
-    <carousel class="cover" @next="next" @prev="prev">
-        <nav-bar class="header"></nav-bar>
-        <nav-bar class="test" isActive="true"></nav-bar>
+    <div>
+    <nav-bar id="test" isActive="true"></nav-bar>
+    <nav-bar class="header"></nav-bar>
+    <carousel class="cover" @next="next" @prev="prev">   
         <carousel-slide v-for="(slides,index) in sliderContant"
         :index="index"
         :key="slides"
@@ -14,6 +15,7 @@
         ></sliderContent>
         </carousel-slide>
     </carousel>
+    </div>
 </template>
 
 <script>
@@ -77,32 +79,33 @@ export default {
 }
 .header{
     padding-top: 20px;
-    z-index: 20;
+    z-index: 100;
     position: absolute;
     width: 100%;
 }
-.test{
+#test{
     position: fixed;
     width: 100%;
     padding-top: 20px;
-    opacity: 1;
-    z-index: -1;
+    opacity: 3;
+    z-index: 98;
     background-color: white;
     border-bottom: 1px solid #56D9D4;
-    
 }
 
 .cover{
     background-size: cover;
     background-position: center;
     height: 100vh;
+    /* height: fit-content; */
     /* position: relative; */
     /* padding-top: 20px; */
     /* width: 100%; */
     /* height: 100%; */
     overflow: hidden;
+    position: relative;
     /* opacity: 0.5; */
     background-color: #5C5959;
-    z-index: 2;
+    z-index: 99;
 }
 </style>

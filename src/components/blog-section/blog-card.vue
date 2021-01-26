@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="img_container">
-            <img :src="roomList[0].primary_image.crop" v-if="roomList.length"/>
+            <img :src="roomList[1].primary_image.crop" v-if="roomList.length"/>
         </div>
         <div class="content_container">
             <div class="title">Blog title</div>
