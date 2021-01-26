@@ -10,15 +10,64 @@
                 </p>
             </div>
          </div>
-        <div class="image_container">
-            <img src="../../assets/slider3.jpg"/>
-        </div>
+        <carousel class="image_container"  @next="next" @prev="prev">   
+            <carousel-slide v-for="(slides,index) in test"
+            :index="index"
+            :key="slides"
+            :visibleSlide="visibleSlide"
+            >
+            <img :src="slides.picture.full_size"/>
+            </carousel-slide>
+        </carousel>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
+import carousel from '../header/carousel.vue'
+import carouselSlide from '../header/carousel-slide.vue'
 export default {
-    props: ['image']
+    props: ['image'],
+    components: {carousel, carouselSlide},
+    data() {
+        return {
+            test: [],
+            visibleSlide: 0,
+        }
+    },
+mounted() {
+  axios.get('https://www.hilltop.ge/api/slider/')
+  .then((response) => {
+    // handle success
+    this.test = response.data;
+    // console.log(this.roomList);
+  })
+  },
+    computed: {
+      slidesLen(){
+          return this.test.length
+      }
+  },
+  methods: {
+          next(){
+          if(this.visibleSlide >= this.slidesLen - 1){
+              this.visibleSlide=0;
+          }else{
+              this.visibleSlide++;
+              console.log(this.slidesLen);
+              console.log(this.visibleSlide);
+          }
+      },
+      prev() {
+          if(this.visibleSlide <= 0){
+              this.visibleSlide=this.slidesLen - 1;
+          }else{
+              this.visibleSlide--;
+              console.log(this.slidesLen);
+              console.log(this.visibleSlide);
+          }
+      }
+  }
 }
 </script>
 
@@ -32,14 +81,15 @@ export default {
 }
 .image_container {
 position: relative;
-z-index: 10;
+/* z-index: 10; */
+border: 2px solid green;
 width: 150%;
 }
 
 .image_container img {
 display: block;
 max-width: 100%;
-max-height: 100%;
+/* max-height: 100%; */
 }
 
 .info_container {
@@ -47,15 +97,17 @@ max-height: 100%;
 /* background-color: rgba(0, 0, 0, 0.51);*/
 background-color: white;
 /* box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.5); */
-border-left: 1px solid green;
+border-left: 2px solid #56D9D4;;
+/* border: 2px solid red; */
 border-radius: 5px;
 position: relative;
-width: 40%;
+width: 50%;
 max-height: 30rem;
 align-self: center;
 padding: 2rem;
-left: 2%;
+left: 8%;
 z-index: 20;
+overflow: hidden;
 }
 .paragraph-text{
     width: 88%;

@@ -21,8 +21,7 @@ export default {
   axios.get('https://www.hilltop.ge/api/slider/')
   .then((response) => {
     // handle success
-    this.test = response.data
-    console.log()
+    this.test = response.data;
     // console.log(this.roomList);
   })
   }

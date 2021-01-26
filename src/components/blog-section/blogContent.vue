@@ -22,13 +22,14 @@ export default {
 <style scoped>
 .title{
     margin-top: 200px;
+    margin-bottom: 50px;;
     line-height: 53px;
     font-size: 40px;
     text-align: center;
 }
 .container ul{
     display: flex;
-    row-gap: 20px; 
+    row-gap: 50px;
     flex-flow: wrap;
 }
 </style>

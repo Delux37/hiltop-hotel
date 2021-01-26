@@ -40,12 +40,12 @@ export default {
 <style scoped>
 section{
     margin-top: 115px;
-    z-index: -5;
 }
 #header{
     height: 53px;
     width: 20%;
     margin: 0 auto;
+    margin-bottom: 30px;
 }
 #header h1{
     font-size: 40px;
@@ -54,7 +54,7 @@ section{
 }
 .test ul{
     display: flex;
-    row-gap: 20px; 
+    row-gap: 30px; 
     flex-flow: wrap;
 }
 

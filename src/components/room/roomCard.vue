@@ -14,7 +14,7 @@
                 </ul>
             </div>
             <div class="description"><p>{{ testObj.description }}</p></div>
-            <div class="viev-gallery-button-container"><h2 class="view-gallery-button">View more</h2></div>
+            <div class="viev-gallery-button-container"><h2 class="view-gallery-button">View Gallery</h2></div>
         </div>
     </div>
 </template>
@@ -51,9 +51,11 @@ export default {
     width: 65%;
     float: left;
     padding-left: 14%;
+    border-left: none;
     border-bottom: 1px solid rgb(214, 214, 214);
     border-right: 1px solid rgb(214, 214, 214);
-
+    /* box-shadow: 0 1px 5px 0 #888888; */
+     z-index: 5;
 }
 .left-div{
     width: 35%;
@@ -100,13 +102,14 @@ export default {
 .viev-gallery-button-container{
     margin-top: 30px;
     margin-bottom: 34px;
-    width: 20%;
+    width: fit-content;
 }
 .viev-gallery-button-container h2{
     font-size: 20px;
     color: #464646;
     font-family: 'Larsseit';
     opacity: 0.7;
+    border-bottom: 1px solid #56d9d500;
 }
 .viev-gallery-button-container h2:hover{
     opacity: 1;

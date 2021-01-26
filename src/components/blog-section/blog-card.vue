@@ -53,6 +53,7 @@ export default   {
 .container{
     width: 50%;
     height: 304px;
+    /* height: 200px; */
     /* height: 28%; */
     padding-left: 50px;
 
@@ -60,7 +61,7 @@ export default   {
     position: relative;
 }
 .img_container{
-    width: 19vw;
+    width: 26vw;
     /* height: 100%; */
     z-index: 10;
     position: relative;
