@@ -13,30 +13,87 @@
                     <li>Person: {{ humanCapacity }}</li>
                 </ul>
             </div>
-            <div class="description"><p>{{ testObj.description }}</p></div>
-            <div class="viev-gallery-button-container"><h2 class="view-gallery-button">View Gallery</h2></div>
+            <div class="description"><p v-html="description"></p></div>
+            <div @click="close" class="viev-gallery-button-container"><h2 class="view-gallery-button">View Gallery</h2></div>
         </div>
+        <teleport to="body">
+            <base-model v-if="showIt">
+                <carousel @next="next" @prev="prev" v-if="showIt">
+                    <carousel-slide
+                    class="carousel"
+                    v-for="(image,index) in images"
+                    :key="image"
+                    :index="index"
+                    :visibleSlide="visibleSlide"
+                    >
+                    <img :src="image.image.full_size">
+                    </carousel-slide>
+                </carousel>
+            </base-model>
+        </teleport>
     </div>
 </template>
 
 <script>
+import BaseModel from '../UI/BaseModel.vue'
+import carousel from '../header/carousel.vue'
+import carouselSlide from '../header/carousel-slide.vue'
 export default {
-    props: ['title', 'humanCapacity', 'price', 'primaryImage'],
+    props: ['title', 'humanCapacity', 'price', 'primaryImage', 'description', 'images'],
+    emits: ['clicked'],
+    components: {
+        BaseModel,
+        carousel,
+        carouselSlide
+    },
     data() {
         return {
-            testObj: {
-                roomType: 'Room Type One',
-                price: '200$',
-                person: '5',
-                description: 'this is rly cool rd ',
-                img: 'http://via.placeholder.com/366x234'
-            }
+            showIt: false,
+            visibleSlide: 0
         }
+    },
+      computed: {
+      slidesLen(){
+          return this.images.length
+      }
+  },
+  methods: {
+      next(){
+          if(this.visibleSlide >= this.slidesLen - 1){
+              this.visibleSlide=0;
+          }else{
+              this.visibleSlide++;
+              console.log(this.slidesLen);
+              console.log(this.visibleSlide);
+          }
+      },
+      prev() {
+          if(this.visibleSlide <= 0){
+              this.visibleSlide=this.slidesLen - 1;
+          }else{
+              this.visibleSlide--;
+              console.log(this.slidesLen);
+              console.log(this.visibleSlide);
+          }
+      },
+      close() {
+        this.showIt = !this.showIt;
     }
+  },
 }
 </script>
 
 <style scoped>
+.carousel{
+    padding: 0;
+    background-color: none;
+    background: none;
+}
+.carousel img{
+    width: 100%;
+    /* height: 100%; */
+    /* height: fit-content; */
+}
 .content-box{
     /* width: 42%; */
     width: 50%;

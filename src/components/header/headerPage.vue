@@ -73,7 +73,7 @@ export default {
 
 <style scoped>
 .cover img{
-    /* width: 100%; */
+    width: 100%;
     height: 100%;
     opacity: 0.5;
 }

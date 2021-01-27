@@ -35,8 +35,9 @@ export default {
     font-size: 22px;
     margin-left: 30px;
     line-height: 30px;
-    color: #FFF;    
+    color: #FFF;   
     border-bottom: 2px solid rgba(105, 88, 88, 0);
+    text-transform: uppercase;
 }
 .main-nav li:hover{
     border-bottom: 2px solid #56D9D4;
@@ -48,6 +49,11 @@ export default {
     height: 100%;
     display: flex;
     align-items: center;
+    padding-top: 10px;
+    /*216px*/
+    /*768 */
+    /**HelveticaNeueCyr */
+    /*FiraGo */
 }
 .row{
     width: 96%;
@@ -67,6 +73,7 @@ export default {
 }
 .active li{
     color: black;
+    margin-bottom: 10px;
 }
 
 @media (max-width: 1200px)

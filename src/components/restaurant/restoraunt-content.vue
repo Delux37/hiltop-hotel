@@ -82,7 +82,7 @@ mounted() {
 .image_container {
 position: relative;
 /* z-index: 10; */
-border: 2px solid green;
+/* border: 2px solid green; */
 width: 150%;
 }
 

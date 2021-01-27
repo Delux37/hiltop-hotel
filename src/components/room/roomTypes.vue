@@ -10,6 +10,9 @@
                 :humanCapacity=rooms.human_capacity
                 :price=rooms.price
                 :primaryImage=rooms.primary_image
+                :description=rooms.description
+                :images=rooms.images
+                @clicked="test"
                 ></room-card>
             </ul>
         </div>
@@ -25,14 +28,16 @@ export default {
     },
     data() {
         return{
-            roomList: []
+            roomList: [],
         }
     },
+
     mounted() {
   axios.get('https://www.hilltop.ge/api/room-types/')
   .then((response) => {
     // handle success
     this.roomList = response.data
+    console.log(this.roomList[0].images);
   })
   }
 }
