@@ -15,6 +15,7 @@ export default createStore({
 
       /*Room Types */
       roomList: [],
+      visibleSlideRooms: 0,
 
       /*Service */
       serviceList: [],
@@ -41,22 +42,21 @@ export default createStore({
       state.visibleSlide = payload
     },
     next(state){
-      const slidesLen = state.sliderContent.length;
-      if(state.visibleSlide >= slidesLen - 1){
-        state.visibleSlide=0;
+      const slidesLen = state.roomList.length;
+      if(state.visibleSlideRooms > slidesLen - 1){
+        state.visibleSlideRooms=0;
       }else{
-        state.visibleSlide++;
-          console.log(slidesLen);
-          console.log(state.visibleSlide);
+        state.visibleSlideRooms++;
+        console.log(state.visibleSlideRooms)
+        console.log('from '+ slidesLen)
       }
      },
      prev(state) {
-      if(state.visibleSlide <= 0){
-        state.visibleSlide=state.slidesLen - 1;
+      const slidesLen = state.roomList.length
+      if(state.visibleSlideRooms < 0){
+        state.visibleSlideRooms=slidesLen - 1;
       }else{
-        state.visibleSlide--;
-          console.log(state.slidesLen);
-          console.log(state.visibleSlide);
+        state.visibleSlideRooms--;
         }
       },
 
@@ -158,8 +158,7 @@ export default createStore({
     )
     .then((response) => {
       // handle success
-      const blogs = response.data
-      // console.log(about);
+      const blogs = response.data.results
       commit('setBlogs', blogs)
     })
   },
@@ -205,6 +204,10 @@ export default createStore({
     roomList(state){
       return state.roomList
     },
+    roomSlides(state){
+      return state.visibleSlideRooms
+    },
+
     /*Services */
     serviceList(state){
       return state.serviceList

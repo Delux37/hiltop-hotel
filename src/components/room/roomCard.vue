@@ -14,17 +14,17 @@
                 </ul>
             </div>
             <div class="description"><p v-html="description"></p></div>
-            <div @click="close" class="viev-gallery-button-container"><h2 class="view-gallery-button">View Gallery</h2></div>
+            <div  @click="close(); testMe()" class="viev-gallery-button-container"><h2 class="view-gallery-button">View Gallery</h2></div>
         </div>
         <teleport to="body">
             <base-model v-if="showIt">
-                <carousel @next="next" @prev="prev" v-if="showIt">
+                <carousel @next="next" @prev="prev" v-if="showIt" :type='type'>
                     <carousel-slide
                     class="carousel"
                     v-for="(image,index) in images"
                     :key="image"
                     :index="index"
-                    :visibleSlide="visibleSlide"
+                    :type='type'
                     >
                     <img :src="image.image.full_size">
                     </carousel-slide>
@@ -49,7 +49,8 @@ export default {
     data() {
         return {
             showIt: false,
-            visibleSlide: 0
+            visibleSlide: 0,
+            type: 'room'
         }
     },
       computed: {
@@ -58,6 +59,9 @@ export default {
       }
   },
   methods: {
+      testMe(){
+          console.log(this.type);
+      },
       next(){
           if(this.visibleSlide >= this.slidesLen - 1){
               this.visibleSlide=0;

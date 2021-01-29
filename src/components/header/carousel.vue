@@ -2,10 +2,10 @@
     <div class="carousel">
         <slot></slot>
 
-        <!-- <img @click="next" class="next" src="../../assets/arrow.svg"/> -->
-        <!-- <img @click="prev" class="prev" src="../../assets/arrow.svg"/> -->
+        <img v-if="type=='room'" @click="next" class="next" src="../../assets/arrow.svg"/>
+        <img v-if="type=='room'" @click="prev" class="prev" src="../../assets/arrow.svg"/>
 
-        <div class="numeration">
+        <div v-else class="numeration">
             <ul>
                 <li 
                 @click="test(nums)" 
@@ -21,7 +21,7 @@
 </template>
 <script>
 export default {
-    props: ['length'],
+    props: ['length', 'type'],
     data() {
         return{
             list: ['01', '02', '03', '04'],
@@ -35,11 +35,11 @@ export default {
         },
         next() {
             // this.$emit('next')
-            // this.$store.dispatch('next');
+            this.$store.dispatch('next');
         },
         prev() {
             // this.$emit('prev')
-            // this.$store.dispatch('prev');
+            this.$store.dispatch('prev');
         }
     },
     computed: {

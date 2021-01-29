@@ -13,7 +13,7 @@
                             <p> {{ blogDetail.date }} </p>
                             <ul>
                                 <li v-for="tag in blogDetail.tags" :key="tag">
-                                    {{ tag }}
+                                    {{ tag.title }}
                                 </li>
                             </ul>
                         </div>
@@ -48,7 +48,6 @@ computed:{
     height: 80vh;
     width: 100%;
     display: flex;
-    border: 2px solid magenta;
 }
 .img-div{
     width: 61%;
@@ -77,7 +76,6 @@ computed:{
 .header-div{
     width: 100%;
     height: 30%;
-    border: 2px solid green;
     padding-left: 10%;
     padding-right: 10%;
     display: flex;
@@ -88,11 +86,14 @@ computed:{
     padding-bottom: 10%;
     font-size: 40px;
     font-weight: bold;
-    border: 2px solid magenta;
 }
 .date-tag-div{
     display: flex;
     justify-content: space-between;
+}
+.date-tag-div ul{
+    display: flex;
+    list-style: none;
 }
 .date-tag-div li{
     margin-left: 5px;

@@ -6,6 +6,7 @@
         <carousel-slide v-for="(slides,index) in sliderContant"
         :index="index"
         :key="slides"
+        :type="type"
         >
         <img :src="slides.picture.full_size"/>
         <sliderContent 
@@ -24,11 +25,11 @@ import carousel from './carousel.vue'
 import carouselSlide from './carousel-slide.vue'
 export default {
   components: { navBar, sliderContent, carousel, carouselSlide },
-  // data() {
-  //     return{
-  //         visibleSlide: 0,
-  //     }
-  // },
+  data() {
+      return{
+          type: 'header',
+      }
+  },
     mounted() {
     this.$store.dispatch('headerSetion');
   },
