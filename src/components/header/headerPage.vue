@@ -2,7 +2,7 @@
     <div>
     <nav-bar id="test" isActive="true"></nav-bar>
     <nav-bar class="header"></nav-bar>
-    <carousel class="cover" @next="next" @prev="prev">   
+    <carousel class="cover" @next="next" @prev="prev" :length="sliderContant.length">   
         <carousel-slide v-for="(slides,index) in sliderContant"
         :index="index"
         :key="slides"

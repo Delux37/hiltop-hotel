@@ -101,7 +101,8 @@ border-left: 2px solid #56D9D4;;
 border-radius: 5px;
 position: relative;
 width: 50%;
-max-height: 30rem;
+/* max-height: 30rem; */
+max-height: 100%;
 align-self: center;
 padding: 2rem;
 left: 8%;

@@ -37,6 +37,9 @@ export default createStore({
     setSlide(state, sliders){
       state.sliderContent = sliders
     },
+    manualSelect(state, payload){
+      state.visibleSlide = payload
+    },
     next(state){
       const slidesLen = state.sliderContent.length;
       if(state.visibleSlide >= slidesLen - 1){
@@ -106,6 +109,9 @@ export default createStore({
     },
     prev({commit}){
       commit('prev');
+    },
+    manual({commit}, payload){
+      commit('manualSelect', payload);
     },
 
 

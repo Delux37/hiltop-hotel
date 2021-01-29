@@ -2,31 +2,85 @@
     <div class="carousel">
         <slot></slot>
 
-        <img @click="next" class="next" src="../../assets/arrow.svg"/>
-        <img @click="prev" class="prev" src="../../assets/arrow.svg"/>
+        <!-- <img @click="next" class="next" src="../../assets/arrow.svg"/> -->
+        <!-- <img @click="prev" class="prev" src="../../assets/arrow.svg"/> -->
+
+        <div class="numeration">
+            <ul>
+                <li 
+                @click="test(nums)" 
+                v-for="(nums, index) in length" 
+                :key="nums"
+                :class="{active: index === visibleSlide}"
+                >
+                    0{{ nums }}
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 <script>
 export default {
+    props: ['length'],
+    data() {
+        return{
+            list: ['01', '02', '03', '04'],
+            yo: 4
+        }
+    },
     methods: {
+        test(num) {
+            console.log(num)
+            this.$store.dispatch('manual', num-1)
+        },
         next() {
             // this.$emit('next')
-            this.$store.dispatch('next');
+            // this.$store.dispatch('next');
         },
         prev() {
             // this.$emit('prev')
-            this.$store.dispatch('prev');
+            // this.$store.dispatch('prev');
         }
+    },
+    computed: {
+        visibleSlide() {
+        return this.$store.getters.visibleSlide
+    }     
     }
 }
 </script>
 <style scoped>
-/* .carousel{
-    position: relative;
-    width: 600px;
-    height: 350px;
-    overflow: hidden;
-} */
+
+.numeration{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-40%);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    margin-right: 2%;
+}
+.numeration ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+.numeration li {
+    border-right: 5px solid #0000004D;
+    color: #0000004D;
+    font-size: 50px;
+    padding-right: 20px;
+    margin-bottom: 5px;
+}
+.numeration li:hover{
+    color: white;
+    border-right: 5px solid white;
+    cursor: pointer;
+}
+.active{
+    color: white !important;
+    border-right: 5px solid white !important;
+}
 button,
 img{
     position: absolute;
