@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import navBar from '../header/nav-bar.vue'
+import navBar from '../components/UI/nav-bar.vue'
 export default{
 components: {
     navBar

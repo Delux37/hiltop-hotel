@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import headerPage from './components//header/headerPage.vue'
-import roomTypes from './components/room/roomTypes.vue'
-import additionalSection from './components/restaurant/additional-section.vue'
-import aboutUs from './components/about/about-us.vue'
-import blogContent from './components/blog-section/blogContent.vue'
-import contactSection from './components/contact-section/contact-section.vue'
+import headerPage from '../components//header/headerPage.vue'
+import roomTypes from '../components/room/roomTypes.vue'
+import additionalSection from '../components/restaurant/additional-section.vue'
+import aboutUs from '../components/about/about-us.vue'
+import blogContent from '../components/blog-section/blogContent.vue'
+import contactSection from '../components/contact-section/contact-section.vue'
 
 export default {
   components: {
@@ -33,7 +33,7 @@ export default {
 }
 </script>
 <style>
-@font-face {
+/* @font-face {
     font-family: 'Larsseit';
     src: url('fonts/Larsseit.eot');
     src: local('Larsseit'),
@@ -50,7 +50,7 @@ export default {
         url('fonts/BigCaslonMedium.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-}
+} */
 *{
     margin: 0;
     padding: 0;

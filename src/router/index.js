@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import blogPage from '../components/blog-section/blogPage.vue'
-import mainPage from '../main-page.vue'
+import blogPage from '../pages/blogPage.vue'
+import mainPage from '../pages/main-page.vue'
 
 
 const router = createRouter({

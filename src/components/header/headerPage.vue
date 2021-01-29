@@ -19,10 +19,10 @@
 </template>
 
 <script>
-import navBar from './nav-bar.vue'
+import navBar from '../UI/nav-bar.vue'
 import sliderContent from './slider-content.vue'
-import carousel from './carousel.vue'
-import carouselSlide from './carousel-slide.vue'
+import carousel from '../UI/carousel.vue'
+import carouselSlide from '../UI/carousel-slide.vue'
 export default {
   components: { navBar, sliderContent, carousel, carouselSlide },
   data() {

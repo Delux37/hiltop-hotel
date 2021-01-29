@@ -24,8 +24,8 @@
 
 <script>
 import axios from 'axios'
-import carousel from '../header/carousel.vue'
-import carouselSlide from '../header/carousel-slide.vue'
+import carousel from '../UI/carousel.vue'
+import carouselSlide from '../UI/carousel-slide.vue'
 export default {
     props: ['title', 'description', 'images'],
     components: {carousel, carouselSlide},
