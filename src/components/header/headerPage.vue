@@ -6,7 +6,6 @@
         <carousel-slide v-for="(slides,index) in sliderContant"
         :index="index"
         :key="slides"
-        :visibleSlide="visibleSlide"
         >
         <img :src="slides.picture.full_size"/>
         <sliderContent 
@@ -21,53 +20,51 @@
 <script>
 import navBar from './nav-bar.vue'
 import sliderContent from './slider-content.vue'
-import axios from 'axios'
 import carousel from './carousel.vue'
 import carouselSlide from './carousel-slide.vue'
-
 export default {
   components: { navBar, sliderContent, carousel, carouselSlide },
-  data() {
-      return{
-          sliderContant: [],
-          visibleSlide: 0,
-      }
+  // data() {
+  //     return{
+  //         visibleSlide: 0,
+  //     }
+  // },
+    mounted() {
+    this.$store.dispatch('headerSetion');
   },
   computed: {
-      slidesLen(){
-          return this.sliderContant.length
-      }
+    sliderContant() {
+        return this.$store.getters.sliderContant
+    }
+    //   slidesLen(){
+    //       return this.sliderContant.length
+    //   },
+     
   },
   methods: {
       next(){
-          if(this.visibleSlide >= this.slidesLen - 1){
-              this.visibleSlide=0;
-          }else{
-              this.visibleSlide++;
-              console.log(this.slidesLen);
-              console.log(this.visibleSlide);
-          }
+        //   if(this.visibleSlide >= this.slidesLen - 1){
+        //       this.visibleSlide=0;
+        //   }else{
+        //       this.visibleSlide++;
+        //       console.log(this.slidesLen);
+        //       console.log(this.visibleSlide);
+        //   }
+        this.$store.dispatch('next');
+        console.log('clicked next')
       },
       prev() {
-          if(this.visibleSlide <= 0){
-              this.visibleSlide=this.slidesLen - 1;
-          }else{
-              this.visibleSlide--;
-              console.log(this.slidesLen);
-              console.log(this.visibleSlide);
-          }
+        //   if(this.visibleSlide <= 0){
+        //       this.visibleSlide=this.slidesLen - 1;
+        //   }else{
+        //       this.visibleSlide--;
+        //       console.log(this.slidesLen);
+        //       console.log(this.visibleSlide);
+        //   }
+        this.$store.dispatch('prev');
       }
   },
-  mounted() {
-  axios.get('https://www.hilltop.ge/api/slider/')
-  .then((response) => {
-    // handle success
-    //sub_title
-    //title
-    this.sliderContant = response.data
-    console.log(this.sliderContant);
-  })
-  }
+
 }
 </script>
 

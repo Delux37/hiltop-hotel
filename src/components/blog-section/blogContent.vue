@@ -3,9 +3,15 @@
         <div class="title">BLOG</div>
         <div class="container">
             <ul>
-                <blog-card></blog-card>
-                <blog-card></blog-card>
-                <blog-card></blog-card>
+                <blog-card
+                v-for="blog in blogList"
+                :key="blog.id"
+                :title="blog.title"
+                :content="blog.short_description"
+                :image="blog.picture.crop"
+                :slug="blog.slug"
+                >
+                </blog-card>
             </ul>
         </div>
     </div>
@@ -14,8 +20,16 @@
 <script>
 import blogCard from './blog-card.vue'
 export default {
-    components: { blogCard }
-    
+    components: { blogCard },
+    computed: {
+    blogList() {
+        return this.$store.getters.blogList
+      }
+    },
+    mounted() {
+    this.$store.dispatch('getBlog');
+  },
+
 }
 </script>
 

@@ -1,30 +1,30 @@
 <template>
     <section>
-        <restoraunt-content></restoraunt-content>
-        <restoraunt-content></restoraunt-content>
+        <restoraunt-content
+        v-for="service in serviceList"
+        :key="service.id"
+        :title="service.title"
+        :description="service.description"
+        :images="service.images"
+        ></restoraunt-content>
     </section>
 </template>
 
 <script>
-import axios from 'axios'
 import restorauntContent from './restoraunt-content.vue'
+
 export default {
   components: {
       restorauntContent
   },
-  data() {
-      return {
-          test: []
+    computed: {
+    serviceList() {
+        return this.$store.getters.serviceList
       }
+    },
+    mounted() {
+    this.$store.dispatch('service');
   },
-  mounted() {
-  axios.get('https://www.hilltop.ge/api/slider/')
-  .then((response) => {
-    // handle success
-    this.test = response.data;
-    // console.log(this.roomList);
-  })
-  }
 }
 </script>
 

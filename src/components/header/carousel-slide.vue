@@ -6,7 +6,12 @@
 
 <script>
 export default {
-    props:['visibleSlide', 'index']
+    props:['index'],
+    computed: {
+    visibleSlide() {
+        return this.$store.getters.visibleSlide
+    }     
+  },
 }
 </script>
 

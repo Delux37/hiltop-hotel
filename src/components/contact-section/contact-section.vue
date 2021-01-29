@@ -5,9 +5,9 @@
                 CONTACT
             </div>
             <div class="additonal-info">
-                <p>Phone: +995 555 555 555</p>
-                <p> e-mail: hiltop@bakuriani.com</p>
-                <p>adress: bakuriani</p>
+                <p>Phone: {{ contact.phone }}</p>
+                <p> e-mail: {{ contact.email }}</p>
+                <p>adress: {{ contact.address }}</p>
             </div>
         </div>
         <div class="map-container">
@@ -15,7 +15,18 @@
         </div>
     </div>
 </template>
-
+<script>
+export default {
+    computed: {
+    contact() {
+        return this.$store.getters.contact
+      }
+    },
+    mounted() {
+    this.$store.dispatch('contact');
+  },
+}
+</script>
 <style scoped>
 p{
     line-height: 30px;

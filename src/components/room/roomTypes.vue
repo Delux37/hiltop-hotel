@@ -21,25 +21,18 @@
 
 <script>
 import roomCard from './roomCard.vue'
-import axios from 'axios'
 export default {
     components: {
         roomCard
     },
-    data() {
-        return{
-            roomList: [],
-        }
+    computed: {
+    roomList() {
+        return this.$store.getters.roomList
+      }
     },
-
     mounted() {
-  axios.get('https://www.hilltop.ge/api/room-types/')
-  .then((response) => {
-    // handle success
-    this.roomList = response.data
-    console.log(this.roomList[0].images);
-  })
-  }
+    this.$store.dispatch('romTypes');
+  },
 }
 </script>
 <style scoped>

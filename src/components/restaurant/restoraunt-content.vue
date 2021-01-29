@@ -2,21 +2,20 @@
     <div class="container">
         <div class="info_container">
             <div class="header-text">
-                <h1> Title</h1>
+                <h1> {{ title }}</h1>
             </div>
             <div class="paragraph-text">
-                <p>
-                 using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publis
-                </p>
+                <p v-html="description">
+                 </p>
             </div>
          </div>
         <carousel class="image_container"  @next="next" @prev="prev">   
-            <carousel-slide v-for="(slides,index) in test"
+            <carousel-slide v-for="(slides,index) in images"
             :index="index"
             :key="slides"
             :visibleSlide="visibleSlide"
             >
-            <img :src="slides.picture.full_size"/>
+            <img :src="slides.image.full_size"/>
             </carousel-slide>
         </carousel>
     </div>
@@ -27,7 +26,7 @@ import axios from 'axios'
 import carousel from '../header/carousel.vue'
 import carouselSlide from '../header/carousel-slide.vue'
 export default {
-    props: ['image'],
+    props: ['title', 'description', 'images'],
     components: {carousel, carouselSlide},
     data() {
         return {

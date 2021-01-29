@@ -10,10 +10,12 @@
 export default {
     methods: {
         next() {
-            this.$emit('next')
+            // this.$emit('next')
+            this.$store.dispatch('next');
         },
         prev() {
-            this.$emit('prev')
+            // this.$emit('prev')
+            this.$store.dispatch('prev');
         }
     }
 }

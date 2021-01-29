@@ -1,19 +1,21 @@
 <template>
     <div class="container">
         <div class="img_container">
-            <img :src="roomList[1].primary_image.crop" v-if="roomList.length"/>
+            <img :src="image" v-if="roomList.length"/>
         </div>
         <div class="content_container">
-            <div class="title">Blog title</div>
-            <div class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </div>
-            <div class="button-div">Read more</div>
+            <div class="title">{{title}}</div>
+            <div class="content" v-html="content"></div>
+            <div @click="blogDetail(slug)" class="button-div">Read more</div>
         </div>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
+
 export default   {
+    props: ['title', 'content', 'image', 'slug'],
         data() {
         return{
             roomList: []
@@ -28,6 +30,12 @@ export default   {
     // console.log(this.roomList)
     // console.log(this.roomList);
   })
+  },
+    methods: {
+      blogDetail(slug){
+          this.$store.dispatch('getBlogDetail', slug)
+          this.$router.push({ name: 'blogDetail', params: { slug: slug } })
+      }
   }
 }
 </script>
