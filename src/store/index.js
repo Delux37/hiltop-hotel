@@ -25,6 +25,9 @@ export default createStore({
       /*Blog */
       blogList: [],
 
+      /*BlogDetail */
+      blogDetail: {},
+
       /*Contact */
       contact: {},
     }
@@ -74,6 +77,11 @@ export default createStore({
         state.blogList=blogs
       },
 
+      /*Blog Detail */
+        setBlogDetail(state, blogDetail){
+          state.blogDetail = blogDetail
+      },
+
       /*Contact */
       setContact(state,contact){
         state.contact=contact
@@ -83,7 +91,9 @@ export default createStore({
      /*Header */
     headerSetion({commit}) {
     axios
-      .get('https://www.hilltop.ge/api/slider/')
+      .get(
+        urls.slider
+      )
       .then((response) => {
         const sliderContent = response.data
         commit('setSlide', sliderContent)
@@ -101,7 +111,9 @@ export default createStore({
 
     /*Room Types */
     romTypes({commit}) {
-      axios.get('https://www.hilltop.ge/api/room-types/')
+      axios.get(
+        urls.roomTypes
+      )
       .then((response) => {
         // handle success
         const roomList = response.data
@@ -111,7 +123,9 @@ export default createStore({
 
     /*Restoraunt Section */
     service({commit}) {
-      axios.get('https://www.hilltop.ge/api/service/')
+      axios.get(
+        urls.service
+      )
       .then((response) => {
         // handle success
         const services = response.data
@@ -120,7 +134,9 @@ export default createStore({
       },
         /*About */
   about({commit}) {
-    axios.get('https://www.hilltop.ge/api/about/')
+    axios.get(
+      urls.about
+    )
     .then((response) => {
       // handle success
       const about = response.data
@@ -137,7 +153,6 @@ export default createStore({
     .then((response) => {
       // handle success
       const blogs = response.data
-      console.log(response.data);
       // console.log(about);
       commit('setBlogs', blogs)
     })
@@ -149,15 +164,16 @@ export default createStore({
     )
     .then((response) => {
       // handle success
-      const contact = response.data
-      console.log(payload);
-      commit('setContact', contact)
+      const blogDetail = response.data
+      commit('setBlogDetail', blogDetail)
     })
   },
 
   /*Contact */
   contact({commit}) {
-    axios.get('https://www.hilltop.ge/api/contact/')
+    axios.get(
+      urls.contact
+    )
     .then((response) => {
       // handle success
       const contact = response.data
@@ -195,8 +211,15 @@ export default createStore({
     contact(state){
       return state.contact
     },
+
+    /* Blogs */
     blogList(state){
       return state.blogList
+    },
+
+    /*BlogDetail */
+    blogDetail(state){
+      return state.blogDetail
     }
   }
 })
