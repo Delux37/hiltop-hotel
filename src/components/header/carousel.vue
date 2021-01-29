@@ -5,13 +5,26 @@
         <img v-if="type=='room'" @click="next" class="next" src="../../assets/arrow.svg"/>
         <img v-if="type=='room'" @click="prev" class="prev" src="../../assets/arrow.svg"/>
 
+        <div v-else-if="type=='restoraunt'" class="middle-manual-selectors">
+            <ul>
+                <li 
+                @click="test1(nums)" 
+                v-for="(nums, index) in length" 
+                :key="nums"
+                :class="{activeMiddle: index === visibleSlideService}"
+                >
+                    O
+                </li>
+            </ul>
+        </div>
+
         <div v-else class="numeration">
             <ul>
                 <li 
                 @click="test(nums)" 
                 v-for="(nums, index) in length" 
                 :key="nums"
-                :class="{active: index === visibleSlide}"
+                :class="{active: index === visibleSlideHeader}"
                 >
                     0{{ nums }}
                 </li>
@@ -33,6 +46,9 @@ export default {
             console.log(num)
             this.$store.dispatch('manual', num-1)
         },
+        test1(num){
+            this.$store.dispatch('manualMiddle', num-1)
+        },
         next() {
             // this.$emit('next')
             this.$store.dispatch('next');
@@ -40,16 +56,45 @@ export default {
         prev() {
             // this.$emit('prev')
             this.$store.dispatch('prev');
+            // manualMiddle
         }
     },
     computed: {
-        visibleSlide() {
+    visibleSlideHeader() {
         return this.$store.getters.visibleSlide
-    }     
+    },
+    visibleSlideService(){
+        return this.$store.getters.serviceSlide
+    }
     }
 }
 </script>
 <style scoped>
+
+.middle-manual-selectors{
+    width: 100%;
+    position: absolute;
+    bottom: 3%;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+.middle-manual-selectors ul{
+    list-style: none;
+    display: flex;
+}
+.middle-manual-selectors li{
+    margin-left: 10px;
+    background-color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 50%;
+    transform: scale(1);
+}
+/*CLASS WHEN MIDDLE MANUAL IS ACTIVE */
+.activeMiddle{
+    
+}
 
 .numeration{
     position: absolute;
@@ -87,6 +132,7 @@ img{
     height: 60px;
     width: 50px;
     top: 50%;
+    /* height: 100%; */
     /* top: calc(50% -20px); */
     /* background-color: rgba(0,0,0,0.8); */
     /* color: white; */

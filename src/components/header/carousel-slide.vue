@@ -15,6 +15,9 @@ export default {
         if(this.type=='header'){
             return this.$store.getters.visibleSlide
         }
+        if(this.type=='restoraunt'){
+            return this.$store.getters.serviceSlide
+        }
         return 0;
     },
   },
@@ -22,11 +25,6 @@ export default {
 </script>
 
 <style scoped>
-#test{
-    width: 100%;
-    border: 5px solid red;
-
-}
 .header{
     position: absolute;
 }

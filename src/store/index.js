@@ -19,6 +19,7 @@ export default createStore({
 
       /*Service */
       serviceList: [],
+      restorauntSlide: 0,
 
       /* About */
       about: {},
@@ -37,6 +38,9 @@ export default createStore({
     /*Header */
     setSlide(state, sliders){
       state.sliderContent = sliders
+    },
+    manualSelectMiddle(state, payload){
+      state.restorauntSlide = payload
     },
     manualSelect(state, payload){
       state.visibleSlide = payload
@@ -68,6 +72,9 @@ export default createStore({
       /*Services */
       setService(state, services){
         state.serviceList=services
+      },
+      setManualMiddle(state,payload){
+        state.restorauntSlide=payload
       },
 
       /*About */
@@ -138,6 +145,10 @@ export default createStore({
         commit('setService', services)
       })
       },
+      manualMiddle({commit}, payload){
+        commit('setManualMiddle', payload);
+      },
+  
         /*About */
   about({commit}) {
     axios.get(
@@ -211,6 +222,9 @@ export default createStore({
     /*Services */
     serviceList(state){
       return state.serviceList
+    },
+    serviceSlide(state){
+      return state.restorauntSlide
     },
     /*About */
     about(state){

@@ -42,29 +42,29 @@ export default {
     //   },
      
   },
-  methods: {
-      next(){
-        //   if(this.visibleSlide >= this.slidesLen - 1){
-        //       this.visibleSlide=0;
-        //   }else{
-        //       this.visibleSlide++;
-        //       console.log(this.slidesLen);
-        //       console.log(this.visibleSlide);
-        //   }
-        this.$store.dispatch('next');
-        console.log('clicked next')
-      },
-      prev() {
-        //   if(this.visibleSlide <= 0){
-        //       this.visibleSlide=this.slidesLen - 1;
-        //   }else{
-        //       this.visibleSlide--;
-        //       console.log(this.slidesLen);
-        //       console.log(this.visibleSlide);
-        //   }
-        this.$store.dispatch('prev');
-      }
-  },
+  // methods: {
+  //     next(){
+  //         if(this.visibleSlide >= this.slidesLen - 1){
+  //             this.visibleSlide=0;
+  //         }else{
+  //             this.visibleSlide++;
+  //             console.log(this.slidesLen);
+  //             console.log(this.visibleSlide);
+  //         }
+  //       this.$store.dispatch('next');
+  //       console.log('clicked next')
+  //     },
+  //     prev() {
+  //         if(this.visibleSlide <= 0){
+  //             this.visibleSlide=this.slidesLen - 1;
+  //         }else{
+  //             this.visibleSlide--;
+  //             console.log(this.slidesLen);
+  //             console.log(this.visibleSlide);
+  //         }
+  //       this.$store.dispatch('prev');
+  //     }
+  // },
 
 }
 </script>

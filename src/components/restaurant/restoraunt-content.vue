@@ -9,11 +9,12 @@
                  </p>
             </div>
          </div>
-        <carousel class="image_container"  @next="next" @prev="prev">   
+        <carousel class="image_container"  @next="next" @prev="prev" :type="type" :length="images.length">   
             <carousel-slide v-for="(slides,index) in images"
             :index="index"
             :key="slides"
             :visibleSlide="visibleSlide"
+            :type="type"
             >
             <img :src="slides.image.full_size"/>
             </carousel-slide>
@@ -30,6 +31,7 @@ export default {
     components: {carousel, carouselSlide},
     data() {
         return {
+            type: 'restoraunt',
             test: [],
             visibleSlide: 0,
         }
