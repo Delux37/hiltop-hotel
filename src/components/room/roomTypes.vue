@@ -51,9 +51,13 @@ section{
     font-family: 'Larsseit';
 }
 .test ul{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
+    row-gap: 20px;
+    /* display: flex;
     row-gap: 30px; 
-    flex-flow: wrap;
+    flex-flow: wrap; */
 }
 
 </style>

@@ -142,4 +142,11 @@ right: 0;
 left: 0;
 transform: scaleX(-1);
 }
+
+@media (max-width: 1280px)
+{
+    .numeration li {
+        font-size: 30px;
+    }
+}
 </style>

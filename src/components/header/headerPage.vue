@@ -37,35 +37,7 @@ export default {
     sliderContant() {
         return this.$store.getters.sliderContant
     }
-    //   slidesLen(){
-    //       return this.sliderContant.length
-    //   },
-     
   },
-  // methods: {
-  //     next(){
-  //         if(this.visibleSlide >= this.slidesLen - 1){
-  //             this.visibleSlide=0;
-  //         }else{
-  //             this.visibleSlide++;
-  //             console.log(this.slidesLen);
-  //             console.log(this.visibleSlide);
-  //         }
-  //       this.$store.dispatch('next');
-  //       console.log('clicked next')
-  //     },
-  //     prev() {
-  //         if(this.visibleSlide <= 0){
-  //             this.visibleSlide=this.slidesLen - 1;
-  //         }else{
-  //             this.visibleSlide--;
-  //             console.log(this.slidesLen);
-  //             console.log(this.visibleSlide);
-  //         }
-  //       this.$store.dispatch('prev');
-  //     }
-  // },
-
 }
 </script>
 
@@ -95,15 +67,10 @@ export default {
     background-size: cover;
     background-position: center;
     height: 100vh;
-    /* height: fit-content; */
-    /* position: relative; */
-    /* padding-top: 20px; */
-    /* width: 100%; */
-    /* height: 100%; */
     overflow: hidden;
     position: relative;
-    /* opacity: 0.5; */
     background-color: #5C5959;
     z-index: 99;
 }
+
 </style>

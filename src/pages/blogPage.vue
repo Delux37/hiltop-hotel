@@ -2,7 +2,7 @@
     <div>
         <nav-bar isActive="true"></nav-bar>
         <div class="container">
-            <div class="img-div">
+            <div class="img-div" v-if="blogDetail.picture">
                 <img :src="blogDetail.picture.full_size"/>
             </div>
             <div class="text-div">
@@ -38,7 +38,9 @@ computed:{
         return this.$store.getters.blogDetail
       }
     },
-    // date,  title,
+  mounted() {
+    this.$store.dispatch('getBlogDetail', this.$route.params.slug)
+  }
 }
 </script>
 

@@ -36,5 +36,14 @@ p {
     font-size: 30px;
     color: #fff;
 }
+@media (max-width: 1280px)
+{
+    h1{
+        font-size: 40px;
+    }
+    p{
+        font-size: 20px;
+    }
+}
 
 </style>

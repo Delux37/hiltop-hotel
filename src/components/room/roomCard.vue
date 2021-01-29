@@ -100,7 +100,8 @@ export default {
 }
 .content-box{
     /* width: 42%; */
-    width: 50%;
+    /* width: 50%; */
+    height: 100%;
     padding-right: 3%;
     /* -moz-box-shadow: 0px 3px 8px rgb(100,100,100);
     -webkit-box-shadow: 0px 3px 8px rgb(100,100,100);
@@ -157,6 +158,7 @@ export default {
 }
 .description p{
     /* font-size: 20px; */
+    height: 100%;
     font-size: 1.2em;
     font-family: 'Larsseit';
 }

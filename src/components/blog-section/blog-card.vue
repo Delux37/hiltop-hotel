@@ -33,7 +33,7 @@ export default   {
   },
     methods: {
       blogDetail(slug){
-          this.$store.dispatch('getBlogDetail', slug)
+
           this.$router.push({ name: 'blogDetail', params: { slug: slug } })
       }
   }

@@ -8,9 +8,8 @@
                 :class="{active: isActive}">
                 <li>Home</li>
                 <li>Room Types</li>
-                <li>Restoraunt</li>
+                <li>Services </li>
                 <li>About us</li>
-                <li>Conference room</li>
                 <li>Blog</li>
                 <li>Contact</li>
                 <li><img src="../../assets/feather-phone.svg"/></li>
@@ -76,10 +75,15 @@ export default {
     margin-bottom: 10px;
 }
 
-@media (max-width: 1200px)
+@media (max-width: 1280px)
 {
-    .row{
-        display: none;
+    .main-nav li{
+        font-size: 15px;
+        margin-left: 10px;
+    }
+    h1{
+        font-size: 20px;
+        letter-spacing: 1px;
     }
 }
 </style>
