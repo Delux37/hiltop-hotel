@@ -35,12 +35,6 @@
 <script>
 export default {
     props: ['length', 'type'],
-    data() {
-        return{
-            list: ['01', '02', '03', '04'],
-            yo: 4
-        }
-    },
     methods: {
         test(num) {
             console.log(num)
@@ -50,13 +44,10 @@ export default {
             this.$store.dispatch('manualMiddle', num-1)
         },
         next() {
-            // this.$emit('next')
             this.$store.dispatch('next');
         },
         prev() {
-            // this.$emit('prev')
             this.$store.dispatch('prev');
-            // manualMiddle
         }
     },
     computed: {
