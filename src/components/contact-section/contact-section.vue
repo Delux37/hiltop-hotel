@@ -71,5 +71,37 @@ p{
     float: right;
     height: 100%;
 }
-
+@media (max-width: 768px){
+    .container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .contact-container{
+        width: 100%;
+        height: fit-content;
+    }
+    .contact{
+        width: 100%;
+        text-align: center;
+        line-height: 24px;
+        font-size: 20px;
+    }
+    .additonal-info{
+        width: 100%;
+        padding: 0 0 0 10px;
+        margin: 10px;
+        border-left: 1px solid #56D9D4;
+    }
+    .additonal-info p {
+        margin-top: 10px;
+        line-height: 19px;
+        font-size: 16px;
+    }
+    .map-container{
+        width: 100%;
+        height: 260px;
+        margin-top: 30px;
+    }
+}
 </style>

@@ -9,19 +9,17 @@ const roomTypesModule = {
       }
     },
     mutations: {
-      next(state){
-        const slidesLen = state.roomList.length;
-        if(state.visibleSlideRooms > slidesLen - 1){
+      next(state, payload){
+        const slidesLen = payload;
+        if(state.visibleSlideRooms >= slidesLen - 1){
           state.visibleSlideRooms=0;
         }else{
           state.visibleSlideRooms++;
-          console.log(state.visibleSlideRooms)
-          console.log('from '+ slidesLen)
         }
        },
-       prev(state) {
-        const slidesLen = state.roomList.length
-        if(state.visibleSlideRooms < 0){
+       prev(state, payload) {
+        const slidesLen = payload
+        if(state.visibleSlideRooms <= 0){
           state.visibleSlideRooms=slidesLen - 1;
         }else{
           state.visibleSlideRooms--;
@@ -34,12 +32,12 @@ const roomTypesModule = {
         },
     },
     actions: {
-      next({commit}){
-        commit('next');
+      next({commit}, payload){
+        commit('next', payload);
         console.log("actions")
       },
-      prev({commit}){
-        commit('prev');
+      prev({commit}, payload){
+        commit('prev', payload);
       },
       romTypes({commit}) {
         axios.get(

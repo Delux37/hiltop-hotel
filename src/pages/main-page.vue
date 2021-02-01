@@ -1,7 +1,7 @@
 <template>
   <div>
-    <header-page></header-page>
-    <room-types></room-types>
+    <header-page id="header"></header-page>
+    <room-types id="roomTypes"></room-types>
     <additional-section></additional-section>
     <about-us></about-us>
     <blog-content></blog-content>
@@ -33,24 +33,6 @@ export default {
 }
 </script>
 <style>
-/* @font-face {
-    font-family: 'Larsseit';
-    src: url('fonts/Larsseit.eot');
-    src: local('Larsseit'),
-        url('fonts/Larsseit.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Larsseit.woff2') format('woff2'),
-        url('fonts/Larsseit.woff') format('woff'),
-        url('fonts/Larsseit.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'BigCaslonMedium';
-    src: local('BigCaslon'),
-        url('fonts/BigCaslonMedium.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-} */
 *{
     margin: 0;
     padding: 0;
@@ -62,6 +44,20 @@ html{
     font-family:  'Lato', 'Arial', sans-serif;
     font-weight: 300;
     text-rendering: optimizeLegibility;
+}
+@media (max-width: 768px) {
+  #header{
+    position: relative;
+    z-index: 10;
+  }
+  #roomTypes{
+    background-color: white;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    margin-top: -250px;
+    z-index: 200;
+  }
 }
 
 </style>

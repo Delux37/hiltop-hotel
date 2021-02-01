@@ -15,6 +15,9 @@ const blogModule = {
       setBlogDetail(state, blogDetail){
         state.blogDetail = blogDetail
     },
+      appendBlogs(state,blogs){
+        state.blogList.push(blogs)
+      }
     },
     actions: {
       getBlog({commit}) {
@@ -23,8 +26,9 @@ const blogModule = {
         )
         .then((response) => {
           // handle success
-          const blogs = response.data.results
+          const blogs = response.data
           commit('setBlogs', blogs)
+          console.log(blogs);
         })
       },
       getBlogDetail({commit}, payload) {
@@ -37,6 +41,15 @@ const blogModule = {
           commit('setBlogDetail', blogDetail)
         })
       },
+      loadMore({commit},nextPage){
+        axios.get(
+          nextPage
+        )
+        .then((response) => {
+          const blogs = response.data
+          commit('appendBlogs', blogs)
+        })
+      }
     },
     getters: {
       blogList(state){

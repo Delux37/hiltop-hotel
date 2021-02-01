@@ -13,7 +13,31 @@ const store = createStore({
     serviceModule,
     blogModule,
     aboutModule,
-    contactModule
+    contactModule,
   },
+  state(){
+    return {
+      isMobileNavBarShown: false,
+      direction: ''
+    }
+  },
+  mutations: {
+    toggleMobileNavBar(state){
+      state.isMobileNavBarShown = !state.isMobileNavBarShown
+    }
+  },
+  actions: {
+    toggleMobileNavBar({commit}){
+      commit('toggleMobileNavBar')
+    },
+    testIt(){
+      console.log('testIt')
+    }
+  },
+  getters: {
+    isMobileNavBarShown(state){
+      return state.isMobileNavBarShown
+    }
+  }
 })
 export default store

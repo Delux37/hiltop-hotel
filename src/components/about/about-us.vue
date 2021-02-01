@@ -36,4 +36,15 @@ export default {
     line-height: 33px;
     font-size: 25px;
 }
+@media (max-width: 768px){
+    .header{
+        margin: 0;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .content{
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
 </style>

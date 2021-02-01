@@ -36,6 +36,15 @@ p {
     font-size: 30px;
     color: #fff;
 }
+@media (max-width: 1366px){
+ h1{
+     font-size: 30px;
+ }
+ p{
+     font-size: 15px;
+     word-spacing: 2px;
+     letter-spacing: 2px;
+ }
 @media (max-width: 1280px)
 {
     h1{
@@ -45,5 +54,31 @@ p {
         font-size: 20px;
     }
 }
+
+
+ @media (max-width: 768px){
+     h1{
+         font-size: 20px;
+         line-height: 24px;
+     }
+     p{
+        font-size: 16px;
+        line-height: 20px
+    }
+    .slider-text-box{
+    position: absolute;
+    bottom: 5%;
+    top: 40%;
+    height: fit-content;
+    margin-left:10px;
+    margin-right: 20%;
+    max-width: 600px;
+    overflow: hidden;
+}
+}
+
+}
+
+
 
 </style>

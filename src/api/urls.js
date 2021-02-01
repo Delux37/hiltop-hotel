@@ -1,5 +1,6 @@
 const urls = {
-    blog: 'https://www.hilltop.ge/api/blog/',
+    blog: 'https://www.hilltop.ge/api/blog/?page=1',
+    // blog: (pageNum) => `https://www.hilltop.ge/api/blog/?page=${pageNum}`,
     blogDetail: (slug) => `https://www.hilltop.ge/api/blog/${slug}`,
     slider: 'https://www.hilltop.ge/api/slider/',
     roomTypes: 'https://www.hilltop.ge/api/room-types/',

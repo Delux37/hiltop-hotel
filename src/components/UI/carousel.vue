@@ -8,7 +8,7 @@
         <div v-else-if="type=='restoraunt'" class="middle-manual-selectors">
             <ul>
                 <li 
-                @click="test1(nums)" 
+                @click="dotted(nums)" 
                 v-for="(nums, index) in length" 
                 :key="nums"
                 :class="{activeMiddle: index === visibleSlideService}"
@@ -21,12 +21,12 @@
         <div v-else class="numeration">
             <ul>
                 <li 
-                @click="test(nums)" 
+                @click="numeration(nums)" 
                 v-for="(nums, index) in length" 
                 :key="nums"
-                :class="{active: index === visibleSlideHeader}"
+                
                 >
-                    0{{ nums }}
+                    <span :class="{active: index === visibleSlideHeader}">0{{ nums }}</span>
                 </li>
             </ul>
         </div>
@@ -34,20 +34,25 @@
 </template>
 <script>
 export default {
-    props: ['length', 'type'],
+    props: ['length', 'type', 'imagesLen'],
+    data() {
+        return{
+            direction: '',
+        }
+    },
     methods: {
-        test(num) {
-            console.log(num)
+        numeration(num) {
             this.$store.dispatch('manual', num-1)
+            this.$store.state.direction="left"
         },
-        test1(num){
+        dotted(num){
             this.$store.dispatch('manualMiddle', num-1)
         },
         next() {
-            this.$store.dispatch('next');
+            this.$store.dispatch('next', this.imagesLen);
         },
         prev() {
-            this.$store.dispatch('prev');
+            this.$store.dispatch('prev', this.imagesLen);
         }
     },
     computed: {
@@ -96,19 +101,23 @@ export default {
     flex-direction: column;
     margin-right: 2%;
 }
+.numeration span{
+    border-right: 5px solid #0000004D;
+    padding-right: 20px;
+    margin-right: 10px;
+    font-family: 'MishafiGold';
+}
 .numeration ul{
     list-style: none;
     display: flex;
     flex-direction: column;
 }
 .numeration li {
-    border-right: 5px solid #0000004D;
     color: #0000004D;
     font-size: 50px;
-    padding-right: 20px;
-    margin-bottom: 5px;
+    
 }
-.numeration li:hover{
+.numeration span:hover{
     color: white;
     border-right: 5px solid white;
     cursor: pointer;

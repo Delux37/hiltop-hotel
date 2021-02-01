@@ -9,8 +9,8 @@
             <div class="title"><h1>{{ title }}</h1></div>
             <div class="amenities">
                 <ul>
-                    <li>Price: ${{ price }}</li>
-                    <li>Person: {{ humanCapacity }}</li>
+                    <li>Price: <strong>${{ price }}</strong></li>
+                    <li>Person: <strong>{{ humanCapacity }}</strong></li>
                 </ul>
             </div>
             <div class="description"><p v-html="description"></p></div>
@@ -49,37 +49,10 @@ export default {
     data() {
         return {
             showIt: false,
-            visibleSlide: 0,
             type: 'room'
         }
     },
-      computed: {
-      slidesLen(){
-          return this.images.length
-      }
-  },
   methods: {
-      testMe(){
-          console.log(this.type);
-      },
-      next(){
-          if(this.visibleSlide >= this.slidesLen - 1){
-              this.visibleSlide=0;
-          }else{
-              this.visibleSlide++;
-              console.log(this.slidesLen);
-              console.log(this.visibleSlide);
-          }
-      },
-      prev() {
-          if(this.visibleSlide <= 0){
-              this.visibleSlide=this.slidesLen - 1;
-          }else{
-              this.visibleSlide--;
-              console.log(this.slidesLen);
-              console.log(this.visibleSlide);
-          }
-      },
       close() {
         this.showIt = !this.showIt;
     }
@@ -95,17 +68,10 @@ export default {
 }
 .carousel img{
     width: 100%;
-    /* height: 100%; */
-    /* height: fit-content; */
 }
 .content-box{
-    /* width: 42%; */
-    /* width: 50%; */
     height: 100%;
     padding-right: 3%;
-    /* -moz-box-shadow: 0px 3px 8px rgb(100,100,100);
-    -webkit-box-shadow: 0px 3px 8px rgb(100,100,100);
-    box-shadow: 0px 3px 8px rgb(100,100,100); */
 }
 .content-div{
     display: flex;
@@ -135,7 +101,6 @@ export default {
 .img-div img{
     width: 100%;
 }
-
 .title{
     margin-top: 31px;
 }
@@ -155,6 +120,9 @@ export default {
     list-style: none;
     font-size: 22px;
     font-family: 'Larsseit';
+}
+.description{
+    /* background-color: white; */
 }
 .description p{
     /* font-size: 20px; */
@@ -178,5 +146,83 @@ export default {
     opacity: 1;
     border-bottom: 1px solid #56D9D4;
     cursor: pointer;
+}
+@media (max-width: 768px){
+.content-box{
+    /* border: 2px solid green; */
+    display: flex;
+    padding-left: 10px;
+}
+.left-div{
+    /* border: 2px solid blue; */
+    width: 50%;
+    /* float: right; */
+}
+.img-div{
+    /* width: 100%; */
+    margin: 0;
+    /* border: 2px solid green; */
+    width: 100%;
+    max-height: 100px;
+    height: 100px;
+}
+.img-div img{
+    width: 100%;
+    /* height: 100%; */
+}
+.content-div{
+    /* height: fit-content; */
+    /*HEIGHT PROBLEMS */
+    max-height: 210px;
+    width: 50%;
+    /* border: 2px solid yellow; */
+    padding: 0;
+}
+.title{
+    /* border: 2px solid blue; */
+    margin: 0;
+    /* text-align: center; */
+}
+.title h1{
+    margin-top: 10px;
+    margin-left: 20px;
+    line-height: 17px;
+    font-size: 14px;
+}
+.amenities{
+    margin: 0;
+    margin-lefT: 40px;
+    margin-top: 10px;
+    /* border: 2px solid green; */
+}
+.amenities li{
+    line-height: 17px;
+    font-size: 14px;
+}
+.description {
+    /* border: 2px solid ORANGE; */
+    position: relative;
+    width: 170%;
+    right: 70%;
+    bottom: -10px;
+    background-color: white;
+    padding: 20px 15px 28px 15px;
+    max-height: 135px;
+    box-shadow: 1px 5px 5px rgba(116, 116, 116, 0.637);
+}
+.description p{
+    line-height: 17px;
+    font-size: 14px;
+}
+.viev-gallery-button-container{
+    /* border: 2px solid red; */
+    position: relative;
+    bottom: 23%;
+    left: 40%;
+}
+.viev-gallery-button-container h2{
+    line-height: 16px;
+    font-size: 13px;
+}
 }
 </style>

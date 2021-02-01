@@ -33,7 +33,6 @@ export default   {
   },
     methods: {
       blogDetail(slug){
-
           this.$router.push({ name: 'blogDetail', params: { slug: slug } })
       }
   }
@@ -88,5 +87,44 @@ export default   {
     align-self: center;
     z-index: 20;
     background-color: white;
+}
+@media (max-width: 768px){
+    .container{
+        height: fit-content;
+        width: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .img_container{
+        width: 70%;
+        margin: 0;
+    }
+    .content_container{
+        width: 70%;
+        margin: 0;
+        position: relative;
+        right: -12%;
+        height: 50%;
+        top: -50px;
+        padding: 20px 15px;
+        box-shadow: 1px 5px 5px rgba(116, 116, 116, 0.637);
+        
+    }
+    .title{
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        margin: 0 0 20px 0;
+    }
+    .content{
+        font-size: 14px;
+        line-height: 17px;
+        margin: 0;
+    }
+    .button-div{
+        font-size:14px;
+        line-height: 17px;
+    }
 }
 </style>

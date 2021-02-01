@@ -30,7 +30,7 @@ export default {
 
 dialog {
   position: fixed;
-
+  /* overflow: hidden; */
   width: 70%;
   left: calc(50% - 35%);
   top: 20%;

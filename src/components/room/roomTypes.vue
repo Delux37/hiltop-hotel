@@ -1,7 +1,7 @@
 <template>
     <section>
         <div id="header"><h1>Room Types</h1></div>
-        <div class="test">
+        <div class="roomCard" v-if="roomList">
             <ul>
                 <room-card
                 v-for="rooms in roomList"
@@ -12,7 +12,6 @@
                 :primaryImage=rooms.primary_image
                 :description=rooms.description
                 :images=rooms.images
-                @clicked="test"
                 ></room-card>
             </ul>
         </div>
@@ -44,13 +43,15 @@ section{
     width: 20%;
     margin: 0 auto;
     margin-bottom: 30px;
+    /* border: 2px solid red; */
 }
 #header h1{
     font-size: 40px;
     color: #464646;
-    font-family: 'Larsseit';
+    font-family: 'LarsseitLight';
+    text-transform: uppercase;   
 }
-.test ul{
+.roomCard ul{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-columns: auto auto;
@@ -58,6 +59,29 @@ section{
     /* display: flex;
     row-gap: 30px; 
     flex-flow: wrap; */
+}
+@media (max-width: 768px){
+.roomCard ul{
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+}
+#header{
+    /* border: 2px solid red; */
+    /* margin: 0; */
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    height: fit-content;
+    text-transform: uppercase;
+    position: relative;
+    top: 10px;
+}
+#header h1{
+    line-height: 18px;
+    font-size: 15px;
+}
 }
 
 </style>
