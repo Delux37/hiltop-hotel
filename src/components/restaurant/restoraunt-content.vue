@@ -11,12 +11,12 @@
                 </div>
             </div>
          </div>
-        <carousel class="image_container" :type="type" :length="images.length">   
+        <carousel class="image_container" :title="title" :type="type" :length="images.length">   
             <carousel-slide v-for="(slides,index) in images"
             :index="index"
             :key="slides"
             :visibleSlide="visibleSlide"
-            :type="type"
+            :type="title"
             class="slides"
             >
             <img :src="slides.image.full_size"/>
@@ -35,7 +35,6 @@ export default {
     data() {
         return {
             type: 'restoraunt',
-            test: [],
             visibleSlide: 0,
         }
     },
@@ -50,7 +49,16 @@ mounted() {
     computed: {
       slidesLen(){
           return this.test.length
-      }
+      },
+    //    visibleSlide() {
+    //         const conferenceRoom = this.$store.state.getters.conferenceSlide;
+    //         const restorauntRoom = this.$store.state.getters.serviceSlide;
+    //         if(this.title ==='restoraunt'){
+    //             return restorauntRoom;
+    //         }else{
+    //             return conferenceRoom
+    //         }
+    //     }
   },
 //   methods: {
 //           next(){

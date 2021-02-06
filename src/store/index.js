@@ -18,7 +18,7 @@ const store = createStore({
   state(){
     return {
       isMobileNavBarShown: false,
-      direction: ''
+      direction: '',
     }
   },
   mutations: {

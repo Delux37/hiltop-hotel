@@ -15,6 +15,7 @@ const roomTypesModule = {
           state.visibleSlideRooms=0;
         }else{
           state.visibleSlideRooms++;
+          console.log('Clicked Next' + slidesLen + state.visibleSlideRooms)
         }
        },
        prev(state, payload) {
@@ -23,6 +24,7 @@ const roomTypesModule = {
           state.visibleSlideRooms=slidesLen - 1;
         }else{
           state.visibleSlideRooms--;
+          console.log('Clicked Prev' + slidesLen + state.visibleSlideRooms)
           }
         },
   
@@ -34,7 +36,7 @@ const roomTypesModule = {
     actions: {
       next({commit}, payload){
         commit('next', payload);
-        console.log("actions")
+        console.log("actions" + payload)
       },
       prev({commit}, payload){
         commit('prev', payload);
@@ -57,8 +59,7 @@ const roomTypesModule = {
       },
       roomSlides(state){
         return state.visibleSlideRooms
-      },
-  
+      },  
     },
   };
   export default roomTypesModule

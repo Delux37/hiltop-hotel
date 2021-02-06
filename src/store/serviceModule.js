@@ -6,6 +6,7 @@ const serviceModule = {
       return{
         serviceList: [],
         restorauntSlide: 0,
+        conferenceSlide: 0,
       }
     },
     mutations: {
@@ -14,6 +15,9 @@ const serviceModule = {
         },
         setManualMiddle(state,payload){
           state.restorauntSlide=payload
+        },
+        setConferenceMiddle(state,payload){
+          state.conferenceSlide=payload
         },
     },
     actions: {
@@ -30,6 +34,9 @@ const serviceModule = {
         manualMiddle({commit}, payload){
           commit('setManualMiddle', payload);
         },
+        manualMiddleConference({commit}, payload){
+          commit('setConferenceMiddle', payload);
+        },
     },
     getters: {
       serviceList(state){
@@ -38,6 +45,9 @@ const serviceModule = {
       serviceSlide(state){
         return state.restorauntSlide
       },
+      conferenceSlide(state){
+        return state.conferenceSlide
+      }
     }
 };
 export default serviceModule

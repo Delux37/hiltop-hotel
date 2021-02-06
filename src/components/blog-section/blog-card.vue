@@ -46,10 +46,14 @@ export default   {
     float: right;
     border-bottom: 1px solid #56D9D4;
 }
+.button-div:hover{
+    cursor: pointer;
+}
 .content{
     line-height: 27px;
     font-size: 20px;
     font-family: 'Larsseit';
+    
 }
 .title{
     line-height: 40px;
@@ -63,7 +67,6 @@ export default   {
     /* height: 200px; */
     /* height: 28%; */
     padding-left: 50px;
-
     display: flex;
     position: relative;
 }
@@ -87,6 +90,7 @@ export default   {
     align-self: center;
     z-index: 20;
     background-color: white;
+    box-shadow: 1px 5px 5px rgba(116, 116, 116, 0.637);
 }
 @media (max-width: 768px){
     .container{

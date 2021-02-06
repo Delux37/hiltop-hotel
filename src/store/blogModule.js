@@ -16,7 +16,8 @@ const blogModule = {
         state.blogDetail = blogDetail
     },
       appendBlogs(state,blogs){
-        state.blogList.push(blogs)
+       state.blogList.results.push(...blogs.results)
+       state.blogList.next=blogs.next;
       }
     },
     actions: {

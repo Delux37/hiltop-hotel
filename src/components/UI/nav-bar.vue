@@ -10,7 +10,11 @@
                 :class="{active: isActive}">
                 <li class="languageList">
                     <div class="language-bar-mob">
-                        <div>ENG</div>
+                          <select name="language" id="language-mob">
+                            <option value="ENG">ENG</option>
+                            <option value="RUS">RUS</option>
+                            <option value="GEO">GEO</option>
+                          </select>
                         <div>
                             <span class="facebook-mob"><img src="../../assets/iconmob.png"/></span>
                             <span class="phone-mob"><img src="../../assets/facebookmob.png"/></span>
@@ -25,8 +29,15 @@
                 <li>Contact</li>
                 <li class="phone-logo"><span><img src="../../assets/feather-phone.svg"/></span></li>
                 <li class="phone-number"><span>+995 555 555 555</span></li>
-                <li class="facebook-logo"><span><img src="../../assets/ionic-logo-facebook.svg"/></span></li>
-                <li class="language-bar">ENG</li>
+                <li v-if="isActive" class="facebook-logo"><span><img src="../../assets/facebookmobblack.png"/></span></li>
+                <li v-else class="facebook-logo"><span><img src="../../assets/ionic-logo-facebook.svg"/></span></li>
+                <li class="language-bar">
+                    <select name="language" id="language">
+                        <option value="ENG">ENG</option>
+                        <option value="RUS">RUS</option>
+                        <option value="GEO">GEO</option>
+                    </select>
+                </li>
             </ul>
         </div>
     </nav>
@@ -42,11 +53,31 @@ export default {
     computed: {
         isMobileNavBarShown(){
             return this.$store.getters.isMobileNavBarShown
-        }
+        },
     }
 }
 </script>
 <style scoped>
+#language{
+    background: none;
+    color: white;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    line-height: 24px;
+}
+#language option{
+    color: black;
+    font-size: 10px;
+    line-height: 15px;
+    width: fit-content;
+}
+#language-mob{
+    background: none;
+    color: black;
+    outline: none;
+    border: none;
+}
 .language-bar-mob{
     display: none;
 }
@@ -113,6 +144,9 @@ export default {
 .active li{
     color: black;
     margin-bottom: 10px;
+}
+.active #language{
+    color: black;
 }
 
 
@@ -182,7 +216,9 @@ export default {
     width: 100%;
     justify-content: space-between; 
 }
-
+.langaugeList{
+    border: 2px solid green;
+}
 .language-bar{
     display: none;
 }
@@ -191,15 +227,21 @@ export default {
     justify-content: space-between;
     width: 100%;
 }
+#language-mob{
+    margin-left: -5px;
+}
+.main-nav li:hover{
+    border: none;
+}
 .phone-logo span{
     position: absolute;
     display: none;
     top: 40px;
     left: 50%;
 }
-
 .language-bar-mob div{
     display: flex;
+    justify-content: flex-start;
 }
 .languageList{
     width: 100%;

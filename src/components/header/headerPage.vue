@@ -20,6 +20,11 @@
             ></sliderContent>
             </carousel-slide>
         </carousel>
+        <video-content id="video-container" :class="{isVideoShown: videoShown}">
+             <span @click="toggleVideo" id="img-close-btn"><img src="../../assets/iconclose.svg"/></span>
+            <iframe id="video" width="789" height="444" src="https://www.youtube.com/embed/4tjvVNcVreE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </video-content>
+        <img v-show="videoShown" @click="toggleVideo" id="video-show-logo" src="../../assets/video2.png"/>
     </div>
 </template>
 
@@ -28,11 +33,13 @@ import navBar from '../UI/nav-bar.vue'
 import sliderContent from './slider-content.vue'
 import carousel from '../UI/carousel.vue'
 import carouselSlide from '../UI/carousel-slide.vue'
+import videoContent from './videoContent.vue'
 export default {
-  components: { navBar, sliderContent, carousel, carouselSlide },
+  components: { navBar, sliderContent, carousel, carouselSlide, videoContent },
   data() {
       return{
           type: 'header',
+          videoShown: false,
       }
   },
     mounted() {
@@ -49,20 +56,52 @@ export default {
    methods: {
         toggleMobileNav(){
             this.$store.dispatch('toggleMobileNavBar')
+        },
+        toggleVideo(){
+            this.videoShown = !this.videoShown;
         }
     },
 }
 </script>
 
 <style scoped>
-
+#video-show-logo:hover{
+    cursor: pointer;
+}
+#video-show-logo{
+    position: absolute;
+    bottom: 5%;
+    right: 3%;
+    z-index: 501;
+}
+.isVideoShown{
+    display: none;
+}
+#video-container{
+    position: absolute;
+    bottom: 25%;
+    right: 10%;
+    z-index: 500;
+}
+#video{
+    width: 100%;
+}
+#img-close-btn{
+    position: relative;
+    top: -50px;
+    float: right;
+    border: 2px solid red;
+}
+#img-close-btn:hover{
+    cursor: pointer;
+}
 .slider{
     /* height: 100%; */
 }
 
 .cover img{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     opacity: 0.5;
 }
 .header{
@@ -89,6 +128,7 @@ export default {
     position: relative;
     background-color: #5C5959;
     z-index: 99;
+    padding: 0;
 }
 .mobile-header{
     width: 100vw;
@@ -107,6 +147,10 @@ export default {
 }
 /*MEDIA QUERIES */
 @media (max-width: 768px){
+#video-container,
+#video-show-logo{
+    display: none;
+}
 .header{
     padding-top: 0;
 }
@@ -117,10 +161,12 @@ export default {
     background-size: cover;
     background-position: initial;
     height: 100vh;
+    display: flex;
+    justify-content: center;
 }
 .cover img{
-    width: 100%;
-    /* height: 100%; */
+    width: unset;
+    height: 100%;
     opacity: 0.5;
 }
 .slider{
@@ -131,5 +177,7 @@ export default {
 #test{
     display: none;
 }
+
 }
+
 </style>

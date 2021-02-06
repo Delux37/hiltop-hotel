@@ -152,6 +152,9 @@ computed:{
 
 }
 @media (max-width:768px){
+    .back-button-pc{
+        display: none;
+    }
     .back-button{
         border: 2px solid blue;
     }

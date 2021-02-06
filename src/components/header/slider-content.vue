@@ -69,11 +69,13 @@ p {
     position: absolute;
     bottom: 5%;
     top: 40%;
+    left: -5%;
     height: fit-content;
-    margin-left:10px;
-    margin-right: 20%;
-    max-width: 600px;
+    /* margin-left:10px; */
+    /* margin-right: 20%; */
+    max-width: 300px;
     overflow: hidden;
+    padding-right: 10px;
 }
 }
 

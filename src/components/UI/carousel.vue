@@ -11,9 +11,8 @@
                 @click="dotted(nums)" 
                 v-for="(nums, index) in length" 
                 :key="nums"
-                :class="{activeMiddle: index === visibleSlideService}"
                 >
-                    O
+                   <span :class="{activeMiddle: index === visibleSlideService}">O</span>
                 </li>
             </ul>
         </div>
@@ -34,7 +33,7 @@
 </template>
 <script>
 export default {
-    props: ['length', 'type', 'imagesLen'],
+    props: ['length', 'type', 'imagesLen', 'title'],
     data() {
         return{
             direction: '',
@@ -46,7 +45,11 @@ export default {
             this.$store.state.direction="left"
         },
         dotted(num){
-            this.$store.dispatch('manualMiddle', num-1)
+            if(this.title==='Restaurant'){
+                this.$store.dispatch('manualMiddle', num-1)
+            }else{
+                this.$store.dispatch('manualMiddleConference', num-1)
+            }
         },
         next() {
             this.$store.dispatch('next', this.imagesLen);
@@ -60,7 +63,12 @@ export default {
         return this.$store.getters.visibleSlide
     },
     visibleSlideService(){
-        return this.$store.getters.serviceSlide
+         if(this.title==='Restaurant'){
+            return this.$store.getters.serviceSlide
+         }else{
+            return this.$store.getters.conferenceSlide
+        }
+        
     }
     }
 }
@@ -71,7 +79,7 @@ export default {
     width: 100%;
     position: absolute;
     bottom: 3%;
-    color: white;
+    color: rgba(255, 255, 255, 0);
     display: flex;
     justify-content: center;
 }
@@ -81,15 +89,19 @@ export default {
 }
 .middle-manual-selectors li{
     margin-left: 10px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5);
     font-weight: bold;
     font-size: 20px;
     border-radius: 50%;
-    transform: scale(1);
+    transform: scale(0.8);
+}
+.middle-manual-selectors li span:hover{
+    cursor: pointer;
 }
 /*CLASS WHEN MIDDLE MANUAL IS ACTIVE */
 .activeMiddle{
-    
+    background-color: rgb(255, 255, 255);
+    transform: scale(1.2);
 }
 
 .numeration{
@@ -132,12 +144,7 @@ img{
     height: 60px;
     width: 50px;
     top: 50%;
-    /* height: 100%; */
-    /* top: calc(50% -20px); */
-    /* background-color: rgba(0,0,0,0.8); */
-    /* color: white; */
     opacity: 0.5;
-    border: 2px solid red;
     border: none;
 }
 img:hover{

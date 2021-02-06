@@ -14,11 +14,11 @@
                 </ul>
             </div>
             <div class="description"><p v-html="description"></p></div>
-            <div  @click="close(); testMe()" class="viev-gallery-button-container"><h2 class="view-gallery-button">View Gallery</h2></div>
+            <div  @click="close" class="viev-gallery-button-container"><h2 class="view-gallery-button">View Gallery</h2></div>
         </div>
         <teleport to="body">
             <base-model v-if="showIt">
-                <carousel @next="next" @prev="prev" v-if="showIt" :type='type'>
+                <carousel :type='type' :imagesLen="images.length">
                     <carousel-slide
                     class="carousel"
                     v-for="(image,index) in images"
@@ -68,6 +68,7 @@ export default {
 }
 .carousel img{
     width: 100%;
+    height: 100%;
 }
 .content-box{
     height: 100%;
@@ -83,6 +84,7 @@ export default {
     border-bottom: 1px solid rgb(214, 214, 214);
     border-right: 1px solid rgb(214, 214, 214);
     /* box-shadow: 0 1px 5px 0 #888888; */
+    box-shadow: 1px 5px 5px rgba(116, 116, 116, 0.637);
      z-index: 5;
 }
 .left-div{
@@ -122,7 +124,7 @@ export default {
     font-family: 'Larsseit';
 }
 .description{
-    /* background-color: white; */
+    padding-right: 5px;
 }
 .description p{
     /* font-size: 20px; */
@@ -207,15 +209,15 @@ export default {
     bottom: -10px;
     background-color: white;
     padding: 20px 15px 28px 15px;
-    max-height: 135px;
+    /* max-height: 135px; */
     box-shadow: 1px 5px 5px rgba(116, 116, 116, 0.637);
+    /* height: 500px; */
 }
 .description p{
     line-height: 17px;
     font-size: 14px;
 }
 .viev-gallery-button-container{
-    /* border: 2px solid red; */
     position: relative;
     bottom: 23%;
     left: 40%;

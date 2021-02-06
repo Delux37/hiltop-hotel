@@ -1,6 +1,6 @@
 <template>
    <div>
-    <div class="backdrop" @click="$emit('close')"></div>
+    <div class="backdrop"></div>
     <transition name="modal">
         <dialog open>
            <slot></slot>
@@ -8,13 +8,6 @@
     </transition>
    </div>
 </template>
-
-<script>
-export default {
-  props: ['open'],
-  emits: ['close'],
-};
-</script>
 
 <style scoped>
 .backdrop {
@@ -36,8 +29,10 @@ dialog {
   top: 20%;
   margin: 0;
   padding: 0;
-  z-index: 101;
+  z-index: 701;
   border: none;
+  
   /* animation: modal 0.3s ease-out forwards; */
 }
+
 </style>

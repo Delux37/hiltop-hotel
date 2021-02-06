@@ -9,11 +9,6 @@
 <script>
 export default {
     props:['index', 'type'],
-    data(){
-        return {
-            test: true
-        }
-    },
     computed: {
     visibleSlide() {
         if(this.type=='room'){
@@ -22,8 +17,11 @@ export default {
         if(this.type=='header'){
             return this.$store.getters.visibleSlide
         }
-        if(this.type=='restoraunt'){
+        if(this.type=='Restaurant'){
             return this.$store.getters.serviceSlide
+        }
+        if(this.type=='Conference Room'){
+            return this.$store.getters.conferenceSlide
         }
         return 0;
     },
