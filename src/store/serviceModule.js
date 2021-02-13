@@ -1,5 +1,6 @@
-import axios from 'axios'
-import urls from '../api/urls.js'
+// import axios from 'axios'
+// import urls from '../api/urls.js'
+import req from './request.js'
 
 const serviceModule = {
     state(){
@@ -11,7 +12,7 @@ const serviceModule = {
     },
     mutations: {
         setService(state, services){
-          state.serviceList=services
+          state.serviceList=services.data
         },
         setManualMiddle(state,payload){
           state.restorauntSlide=payload
@@ -21,15 +22,24 @@ const serviceModule = {
         },
     },
     actions: {
-      service({commit}) {
-        axios.get(
-          urls.service
-        )
-        .then((response) => {
-          // handle success
-          const services = response.data
-          commit('setService', services)
-        })
+      // service({commit}) {
+      //   axios.get(
+      //     urls.service
+      //   )
+      //   .then((response) => {
+      //     // handle success
+      //     const services = response.data
+      //     console.log(response.data);
+      //     commit('setService', services)
+      //   })
+      //   },
+        async service({commit, rootState}) {
+          const data = await req.get('service/', {
+              headers : {
+                  'Accept-Language' : rootState.globalLanguage
+              }
+          })
+          commit('setService', data)
         },
         manualMiddle({commit}, payload){
           commit('setManualMiddle', payload);

@@ -30,6 +30,9 @@ export default {
     computed: {
     blogList() {
         return this.$store.getters.blogList
+    },
+    language(){
+        return this.$store.getters.getGlobalLanguage;
       }
     },
     mounted() {
@@ -43,7 +46,12 @@ export default {
                this.nothingToLoad = true;
            }
        }
-   }
+   },
+    watch: {
+        language(){
+               this.$store.dispatch('getBlog');
+        }
+    }
 }
 </script>
 
@@ -68,6 +76,8 @@ export default {
     line-height: 53px;
     font-size: 40px;
     text-align: center;
+    font-family: 'Larsseit';
+    font-weight: 100;
 }
 .container ul{
     display: flex;

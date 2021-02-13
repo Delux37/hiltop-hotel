@@ -6,7 +6,7 @@
             <img src="../../assets/whatsapp-white.svg"/>
         </div>
         <nav-bar id="test" isActive="true"></nav-bar>
-        <nav-bar class="header"></nav-bar>
+        <nav-bar @testFunction = "test" class="header"></nav-bar>
         <carousel class="cover" :length="sliderContant.length">   
             <carousel-slide  class="slider" v-for="(slides,index) in sliderContant"
             :index="index"
@@ -21,7 +21,7 @@
             </carousel-slide>
         </carousel>
         <video-content id="video-container" :class="{isVideoShown: videoShown}">
-             <span @click="toggleVideo" id="img-close-btn"><img src="../../assets/iconclose.svg"/></span>
+             <span @click="toggleVideo" id="img-close-btn"><img src="../../assets/white-x.svg"/></span>
             <iframe id="video" width="789" height="444" src="https://www.youtube.com/embed/4tjvVNcVreE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </video-content>
         <img v-show="videoShown" @click="toggleVideo" id="video-show-logo" src="../../assets/video2.png"/>
@@ -50,8 +50,17 @@ export default {
         return this.$store.getters.sliderContant
     },
     isMobileNavBarShown(){
-            return this.$store.getters.isMobileNavBarShown
-        }
+        return this.$store.getters.isMobileNavBarShown
+    },
+    language() {
+        return this.$store.getters.getGlobalLanguage;
+    },
+    
+  },
+  watch: {
+      language() {
+          this.$store.dispatch('headerSetion');
+      }
   },
    methods: {
         toggleMobileNav(){
@@ -59,6 +68,9 @@ export default {
         },
         toggleVideo(){
             this.videoShown = !this.videoShown;
+        },
+        test(value) {
+            console.log(value);
         }
     },
 }
@@ -85,18 +97,23 @@ export default {
 }
 #video{
     width: 100%;
+    height: 350px;
 }
 #img-close-btn{
-    position: relative;
-    top: -50px;
-    float: right;
-    border: 2px solid red;
+    position: absolute;
+    /* top: -7%;
+    right: -1.5%; */
+    
+    top: -5%;
+    right: -0.5%;
 }
+#img-close-btn img{
+    width: 15px;
+    height: 15px;
+}
+
 #img-close-btn:hover{
     cursor: pointer;
-}
-.slider{
-    /* height: 100%; */
 }
 
 .cover img{
@@ -105,7 +122,6 @@ export default {
     opacity: 0.5;
 }
 .header{
-    padding-top: 20px;
     z-index: 100;
     position: absolute;
     width: 100%;
@@ -113,7 +129,6 @@ export default {
 #test{
     position: fixed;
     width: 100%;
-    padding-top: 20px; 
     opacity: 3;
     z-index: 98;
     background-color: white;
@@ -146,6 +161,15 @@ export default {
     color: white;
 }
 /*MEDIA QUERIES */
+@media(max-width: 1440px){
+    .header{
+        padding: 0;
+    }
+    #video{
+    height: 350px;
+    }
+}
+
 @media (max-width: 768px){
 #video-container,
 #video-show-logo{

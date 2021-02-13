@@ -12,29 +12,37 @@ export default {
     computed: {
     about() {
         return this.$store.getters.about
+      },
+    language(){
+          return this.$store.getters.getGlobalLanguage;
       }
     },
     mounted() {
     this.$store.dispatch('about');
   },
+    watch:{
+        language(){
+            this.$store.dispatch('about');
+        }
+    }
 }
 </script>
 
 <style scoped>
 .header{
     margin-top: 115px;
-    height: 53px;
-    font-size: 40px;
+    height: 36px;
+    font-size: 30px;
     text-align: center;
-    font-family: 'BigCaslonMedium';
+    font-family: 'LarsseitLight';
 }
 .content{
-    font-family: 'Larsseit';
+    font-family: 'larsseit-thinitalic';
     text-align: center;
     width: 83%;
     margin: 15px auto;
-    line-height: 33px;
-    font-size: 25px;
+    line-height: 26px;
+    font-size: 22px;
 }
 @media (max-width: 768px){
     .header{

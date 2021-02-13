@@ -5,9 +5,9 @@
                 CONTACT
             </div>
             <div class="additonal-info">
-                <p>Phone: {{ contact.phone }}</p>
-                <p> e-mail: {{ contact.email }}</p>
-                <p>adress: {{ contact.address }}</p>
+                <p>PHONE: <span>{{ contact.phone }}</span></p>
+                <p>E-MAIL: <span>{{ contact.email }}</span></p>
+                <p>ADRESS: <span>{{ contact.address }}</span></p>
             </div>
         </div>
         <div class="map-container">
@@ -17,14 +17,29 @@
 </template>
 <script>
 export default {
+    data() {
+        return {
+            link: {
+                hash: '#contact'
+            },
+        }
+    },
     computed: {
     contact() {
         return this.$store.getters.contact
-      }
+      },
+    language() {
+         return this.$store.getters.getGlobalLanguage;
+    }
     },
     mounted() {
     this.$store.dispatch('contact');
   },
+  watch: {
+      language(){
+          this.$store.dispatch('contact');
+      }
+  }
 }
 </script>
 <style scoped>
@@ -34,17 +49,35 @@ p{
     margin-bottom: 11px;
 }
 .additonal-info{
-    padding: 90px;
+    border-left: 1px solid #464646;
+    padding-right: 50px;
+    align-self: center;
+    margin-left: 54px;
+    padding-left: 10px;
     width: 100%;
     display: flex;
     flex-direction: column;
+    font-size: 16px;
+    line-height: 19px;
+    font-family: 'LarsseitMedium';
+}
+
+.additonal-info p span{
+    font-weight: 700;
 }
 .contact{
-    font-size: 40px;
-    line-height: 53px;
+    font-size: 30px;
+    line-height: 36px;
     color: #464646;
+    font-family: 'Larsseit';
+    border-left: 1px solid white;
+    position: absolute;
+    top: -20%;
 }
 .contact-container{
+    display: flex;
+    align-items: center;
+    border-left: 1px solid #56D9D4;
     background-color: white;
     width: 33%;
     height: 337px;
@@ -52,7 +85,9 @@ p{
     align-self: center;
     position: relative;
     left: 2%;
+    box-shadow: 1px 2px 3px rgba(116, 116, 116, 0.349);
 }
+
 .container{
     margin-top: 202px;
     margin-bottom: 100px;

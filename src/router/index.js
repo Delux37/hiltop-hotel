@@ -5,6 +5,17 @@ import mainPage from '../pages/main-page.vue'
 
 const router = createRouter({
   history: createWebHistory(),
+  scrollBehaviour(to,from,savedPosition){
+    if(savedPosition){
+      return savedPosition;
+    }else{
+      const position = {};
+      if(to.hash){
+        position.selector = to.hash;
+        return false;
+      }
+    }
+  },
   routes: [
     {
       path: '/', component: mainPage, name: 'homePage'

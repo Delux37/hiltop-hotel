@@ -27,11 +27,19 @@ export default {
     computed: {
     roomList() {
         return this.$store.getters.roomList
-      }
+      },
+    language() {
+        return this.$store.getters.getGlobalLanguage;
+    }
     },
     mounted() {
     this.$store.dispatch('romTypes');
   },
+  watch: {
+      language() {
+          this.$store.dispatch('romTypes');
+      }
+  }
 }
 </script>
 <style scoped>
@@ -48,14 +56,16 @@ section{
 #header h1{
     font-size: 40px;
     color: #464646;
+    font-weight: 100;
     font-family: 'LarsseitLight';
-    text-transform: uppercase;   
+    text-transform: uppercase;  
 }
 .roomCard ul{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-columns: auto auto;
     row-gap: 20px;
+
     /* display: flex;
     row-gap: 30px; 
     flex-flow: wrap; */

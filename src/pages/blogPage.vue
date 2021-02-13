@@ -5,12 +5,14 @@
             <div class="img-div" v-if="blogDetail.picture">
                 <img  :src="blogDetail.picture.full_size"/>
             </div>
-            <div @click="$router.push({ name: 'homePage' })" class="back-button-pc">
-                <img src="../assets/whatsapp-black.png"/> 
-            </div>
             <div class="text-div">
                 <div class="text-div-container">
                     <div class="header-div">
+                        <div @click="$router.push({ name: 'homePage' })" class="back-button-pc">
+                            <a href="#roomTypes">
+                             <img src="../assets/back-black-btn.svg"/> 
+                            </a>
+                        </div>
                         <div class="title-div">{{ blogDetail.title }}</div>
                         <div class="date-tag-div">
                             <p> {{ blogDetail.date }} </p>
@@ -24,7 +26,7 @@
                     <div class="content-div">
                         <p v-html="blogDetail.description"></p>
                     </div> 
-                    <div class="date-tag-div mobile">
+                    <div class="date-tag-div mobile hide">
                             <p> {{ blogDetail.date }} </p>
                             <ul>
                                 <li v-for="tag in blogDetail.tags" :key="tag">
@@ -47,32 +49,35 @@ components: {
 computed:{
     blogDetail() {
         return this.$store.getters.blogDetail
+      },
+      language() {
+        return this.$store.getters.getGlobalLanguage;
       }
     },
   mounted() {
     this.$store.dispatch('getBlogDetail', this.$route.params.slug)
   },
-  methods: {
-      back(){
-          this.$routes.push({ path: '/'})
-          console.log('Tried to push')
+  watch: {
+      language(){
+          this.$store.dispatch('getBlogDetail', this.$route.params.slug);
       }
   }
 }
 </script>
 
 <style scoped>
+.back-button-pc:hover{
+    cursor: pointer;
+}
 .back-button-pc{
    position: absolute;
-   right: 35%;
-   top: 25%;
+   top: 100px; 
    z-index: 100;
-   border: 2px solid yellow;
 }
 #test{
     /* position: fixed; */
     width: 100%;
-    padding: 40px 0;
+    /* padding: 40px 0; */
     opacity: 3;
     z-index: 98;
     background-color: white;
@@ -95,36 +100,38 @@ computed:{
 }
 .text-div{
     width: 39%;
-    /* border: 2px solid red; */
-    display: flex;
-    align-items: center;
+    /* display: flex; */
+    /* align-items: center; */
 }
 .text-div-container{
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     height: 90%;
-    /* border: 2px solid magenta; */
     width: 100%;
 }
 /* HEADER SECTION  */
 .header-div{
     width: 100%;
     height: 30%;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 20px;
+    padding-right: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
 .title-div{
-    padding-bottom: 10%;
-    font-size: 40px;
-    font-weight: bold;
+    padding-bottom: 26px;
+    font-size: 22px;
+    line-height: 27px;
+    font-family: 'BigCaslonMedium';
 }
 .date-tag-div{
     display: flex;
     justify-content: space-between;
+    /* display: none; */
+}
+.hide{
     display: none;
 }
 .date-tag-div ul{
@@ -133,20 +140,25 @@ computed:{
 }
 .date-tag-div li{
     margin-left: 5px;
+    font-size: 13px;
+    line-height: 16px;
+    font-family: 'LarsseinThinItalic';
 }
 /* */
 .content-div{
     position: relative;
     width: 100%;
-    height: 70%;
+    height: fit-content;
+    align-self: center;
     z-index: 20;
     right: 7%;
-    font-size: 20px;
+    font-size: 17px;
     display: flex;
     align-items: center;
-    font-weight: bold;
-    padding: 20% 8%;
-    border-right: 1px solid #56D9D4;
+    font-family: 'LarsseitThin';
+    padding: 50px 30px;
+    /* border-right: 1px solid #56D9D4; */
+    box-shadow: 1px 5px 5px rgba(116, 116, 116, 0.637);
     background-color: #fff;
     overflow: hidden;
 

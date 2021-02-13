@@ -1,5 +1,6 @@
 <template>
     <div class="carousel">
+        <img v-if="type=='room'" @click="$emit('close')" id="close" src="../../assets/iconclose.svg"/>
         <slot></slot>
 
         <img v-if="type=='room'" @click="next" class="next" src="../../assets/arrow.svg"/>
@@ -11,8 +12,9 @@
                 @click="dotted(nums)" 
                 v-for="(nums, index) in length" 
                 :key="nums"
+                :class="{activeMiddle: index === visibleSlideService}"
                 >
-                   <span :class="{activeMiddle: index === visibleSlideService}">O</span>
+                   <span ></span>
                 </li>
             </ul>
         </div>
@@ -25,7 +27,9 @@
                 :key="nums"
                 
                 >
-                    <span :class="{active: index === visibleSlideHeader}">0{{ nums }}</span>
+                    <span class="test" :class="{active: index === visibleSlideHeader}">
+                        <span>0{{ nums }}</span>
+                    </span>
                 </li>
             </ul>
         </div>
@@ -34,6 +38,7 @@
 <script>
 export default {
     props: ['length', 'type', 'imagesLen', 'title'],
+    emits: ['close'],
     data() {
         return{
             direction: '',
@@ -56,7 +61,7 @@ export default {
         },
         prev() {
             this.$store.dispatch('prev', this.imagesLen);
-        }
+        },
     },
     computed: {
     visibleSlideHeader() {
@@ -88,21 +93,34 @@ export default {
     display: flex;
 }
 .middle-manual-selectors li{
+    width: 8px;
+    height: 8px;
+
+    /* display: inline-block; */
+    /* border-radius: 50%; */
+    /* background: #000; */
+    /* opacity: .2; */
+    
+
     margin-left: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
-    font-weight: bold;
-    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+    /* font-weight: bold;
+    font-size: 20px; */
     border-radius: 50%;
-    transform: scale(0.8);
+    /* transform: scale(0.8); */
 }
-.middle-manual-selectors li span:hover{
+.middle-manual-selectors li:hover{
     cursor: pointer;
 }
 /*CLASS WHEN MIDDLE MANUAL IS ACTIVE */
 .activeMiddle{
-    background-color: rgb(255, 255, 255);
-    transform: scale(1.2);
+    /* background-color: rgb(255, 255, 255);
+    transform: scale(1.2); */
+    width: 16px !important;
+    border-radius: 20px !important;
 }
+
+
 
 .numeration{
     position: absolute;
@@ -111,40 +129,51 @@ export default {
     right: 0;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
     margin-right: 2%;
+
+    border-right: 1px solid #0000004D;
 }
-.numeration span{
-    border-right: 5px solid #0000004D;
+.test{
+    border-right: 1px solid #00000000;
+    margin-top: -10px;
     padding-right: 20px;
-    margin-right: 10px;
-    font-family: 'MishafiGold';
+    /* margin-right: 10px; */
+    margin-right: -2px;
+}
+.test span{
+    font-size: 20px; 
 }
 .numeration ul{
     list-style: none;
     display: flex;
     flex-direction: column;
+    
 }
 .numeration li {
     color: #0000004D;
     font-size: 50px;
-    
+    margin-top: -1px;
 }
-.numeration span:hover{
-    color: white;
-    border-right: 5px solid white;
+.numeration .test:hover{
+    color: #FFFAFA ;
+    border-right: 3px solid #FFFAFA ;
     cursor: pointer;
 }
 .active{
-    color: white !important;
-    border-right: 5px solid white !important;
+    color: #FFFAFA  !important;
+    border-right: 3px solid #FFFAFA !important;
 }
 button,
 img{
     position: absolute;
-    height: 60px;
-    width: 50px;
-    top: 50%;
-    opacity: 0.5;
+    /* height: 60px;
+    width: 50px; */
+    /* height: 25px; */
+    /* width: 15px; */
+    top: 70%;
+    /* opacity: 0.5; */
     border: none;
 }
 img:hover{
@@ -153,14 +182,35 @@ img:hover{
 }
 .next{
 right: 0;
+right: 50px;
 }
 .prev{
 left: 0;
 transform: scaleX(-1);
+left: 50px;
+}
+#close{
+    position: absolute;
+    right: 0;
+    top: -5%;
+}
+@media(max-width: 1660px){
+    img{
+        top: 64%;
+    }
+}
+
+@media(max-width: 1330px){
+    img{
+        top: 70%;
+    }
 }
 
 @media (max-width: 1280px)
 {
+    img{
+        top: 55%;
+    }
     .numeration li {
         font-size: 30px;
     }

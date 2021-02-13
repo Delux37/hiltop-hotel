@@ -17,8 +17,8 @@
             <div  @click="close" class="viev-gallery-button-container"><h2 class="view-gallery-button">View Gallery</h2></div>
         </div>
         <teleport to="body">
-            <base-model v-if="showIt">
-                <carousel :type='type' :imagesLen="images.length">
+            <base-model v-if="showIt" @close="close">
+                <carousel :type='type' :imagesLen="images.length" @close="close"> 
                     <carousel-slide
                     class="carousel"
                     v-for="(image,index) in images"
@@ -55,7 +55,7 @@ export default {
   methods: {
       close() {
         this.showIt = !this.showIt;
-    }
+    },
   },
 }
 </script>
@@ -86,6 +86,7 @@ export default {
     /* box-shadow: 0 1px 5px 0 #888888; */
     box-shadow: 1px 5px 5px rgba(116, 116, 116, 0.637);
      z-index: 5;
+     position: relative;
 }
 .left-div{
     width: 35%;
@@ -93,12 +94,11 @@ export default {
     height: 100%;
 }
 .img-div{
-    /* height: 234px;//21
-    width: 366px;//19 */
-    /* height: 21%; */
     width: 19vw;
     margin-top: 71px;
     margin-left: 50px;
+    position: relative;
+    z-index: 15;
 }
 .img-div img{
     width: 100%;
@@ -107,21 +107,31 @@ export default {
     margin-top: 31px;
 }
 .title h1{
+    font-family: 'BigCaslonMedium';
     color: #464646;
-    /* font-size: 30px; */
-    font-size: 1.8rem;
+    font-size: 22px;
+    line-height: 27px;
 }
 .amenities{
     padding-top: 4px;
     padding-bottom: 4px;
     margin: 32px 30px;
-    padding-left: 6px;
+    padding-left: 16px;
     border-left: 1px solid #56D9D4;
 }
 .amenities ul{
     list-style: none;
     font-size: 22px;
     font-family: 'Larsseit';
+    font-weight: 100;
+    color: rgb(126, 126, 126);
+}
+strong{
+    color: rgb(59, 59, 59);
+}
+.amenities ul li{
+   margin-top: 5px;
+   font-family: 'Larsseit';
 }
 .description{
     padding-right: 5px;
@@ -130,17 +140,18 @@ export default {
     /* font-size: 20px; */
     height: 100%;
     font-size: 1.2em;
-    font-family: 'Larsseit';
+    font-family: 'LarsseitThinItalic';
 }
 .viev-gallery-button-container{
-    margin-top: 30px;
-    margin-bottom: 34px;
+    margin-top: 16px;
+    margin-bottom: 25px;
     width: fit-content;
 }
 .viev-gallery-button-container h2{
-    font-size: 20px;
-    color: #464646;
-    font-family: 'Larsseit';
+    font-size: 15px;
+    line-height: 18px;
+    color: #8a8a8a;
+    font-family: 'LarsseitLight';
     opacity: 0.7;
     border-bottom: 1px solid #56d9d500;
 }

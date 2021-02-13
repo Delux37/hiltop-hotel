@@ -20,11 +20,19 @@ export default {
     computed: {
     serviceList() {
         return this.$store.getters.serviceList
-      }
+      },
+    language() {
+      return this.$store.getters.getGlobalLanguage;
+    }
     },
     mounted() {
     this.$store.dispatch('service');
   },
+  watch: {
+    language() {
+      this.$store.dispatch('service');
+    }
+  }
 }
 </script>
 

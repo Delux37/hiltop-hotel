@@ -30,11 +30,19 @@ h1{
     margin-bottom: 22px;
 }
 p {
-    font-family: 'BigCaslonMedium';
+    font-family: 'BigCaslon';
     letter-spacing: 3px;
     word-spacing: 5px;
     font-size: 30px;
     color: #fff;
+}
+@media(max-width: 1440px){
+    h1{
+        font-size: 30px;
+    }
+    p{
+        font-size: 20px;
+    }
 }
 @media (max-width: 1366px){
  h1{

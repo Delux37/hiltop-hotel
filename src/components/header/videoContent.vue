@@ -12,10 +12,15 @@ export default {
 
 <style scoped>
 .container{
-    width: 45%;
+    width: 35%;
     height: fit-content;
     padding: 20px;
     background-color: white;
-    border-radius: 5px;
+}
+@media(max-width: 1440px){
+    .container{
+        width: 40%;
+        padding: 10px;
+    }
 }
 </style>

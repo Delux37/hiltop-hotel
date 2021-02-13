@@ -1,5 +1,6 @@
-import urls from '../api/urls.js'
-import axios from 'axios'
+// import urls from '../api/urls.js'
+// import axios from 'axios'
+import req from './request.js'
 const headerModule = {
     state() { 
       return {  
@@ -9,23 +10,31 @@ const headerModule = {
     },
     mutations: {
       setSlide(state, sliders){
-        state.sliderContent = sliders
+        state.sliderContent = sliders.data
       },
       manualSelect(state, payload){
         state.visibleSlide = payload
       },
     },
     actions: {
-      headerSetion({commit}) {
-        axios
-          .get(
-            urls.slider
-          )
-          .then((response) => {
-            const sliderContent = response.data
-            commit('setSlide', sliderContent)
-            // this.sliderContant = response.data
+      // headerSetion({commit}) {
+      //   axios
+      //     .get(
+      //       urls.slider
+      //     )
+      //     .then((response) => {
+      //       const sliderContent = response.data
+      //       commit('setSlide', sliderContent)
+      //       this.sliderContant = response.data
+      //     })
+      //   },
+        async headerSetion({commit, rootState}) {
+          const data = await req.get('slider/', {
+              headers : {
+                  'Accept-Language' : rootState.globalLanguage
+              }
           })
+          commit('setSlide', data);
         },
         manual({commit}, payload){
           commit('manualSelect', payload);

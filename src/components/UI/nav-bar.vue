@@ -21,22 +21,24 @@
                         </div>
                     </div>
                 </li>
-                <li>Home</li>
-                <li>Room Types</li>
-                <li>Services </li>
-                <li>About us</li>
-                <li>Blog</li>
-                <li>Contact</li>
+                <li @click="emitHome('Home')">Home</li>
+                <li @click="emitHome('RoomTypes')">Room Types</li>
+                <li @click="emitHome('Services')">Services </li>
+                <li @click="emitHome('AboutUs')">About us</li>
+                <li @click="emitHome('Blog')">Blog</li>
+                <li @click="emitHome('Contact')">Contact</li>
                 <li class="phone-logo"><span><img src="../../assets/feather-phone.svg"/></span></li>
                 <li class="phone-number"><span>+995 555 555 555</span></li>
                 <li v-if="isActive" class="facebook-logo"><span><img src="../../assets/facebookmobblack.png"/></span></li>
                 <li v-else class="facebook-logo"><span><img src="../../assets/ionic-logo-facebook.svg"/></span></li>
-                <li class="language-bar">
-                    <select name="language" id="language">
-                        <option value="ENG">ENG</option>
-                        <option value="RUS">RUS</option>
-                        <option value="GEO">GEO</option>
-                    </select>
+                <li class="select ">
+                    <div class="selected_wrapper" @click="toggleShown">
+                        <p>{{ selected }}</p>
+                        <img  :class="{selected: shown}" id="downarrow" src="../../assets/down-arrow-white.svg"/>
+                    </div>
+                    <div v-if="shown" class="items">
+                        <div class="item" @click="changeLanguage(lan)" v-for="lan in lans" :key=lan>{{ lan }}</div>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -45,26 +47,72 @@
 <script>
 export default {
     props: ['isActive'],
+    data() {
+        return {
+            lans: ['eng', 'rus', 'geo'],
+            selected: this.$store.getters.dynamicLang,
+            shown: false,
+            selectedComponent: 'Home',
+        }
+    },
     methods: {
+        changeLanguage(lan){
+            this.selected = lan;
+            this.$store.dispatch('setLanguage', lan);
+            this.toggleShown();
+        },
+        toggleShown(){
+            this.shown = !this.shown;
+        },
         toggleMobileNav(){
             this.$store.dispatch('toggleMobileNavBar')
+        },
+        emitHome(value){
+            this.$emit('testFunction', value);
         }
     },
     computed: {
         isMobileNavBarShown(){
             return this.$store.getters.isMobileNavBarShown
         },
-    }
+    },
 }
 </script>
 <style scoped>
+#downarrow{
+    border-bottom: none;
+}
+.selected{
+    transform: scaleY(-1);
+}
+.selected_wrapper{
+    display: flex;
+}
+.items{
+    background-color: white;
+    color: black;
+    position: absolute;
+    text-transform: lowercase;
+    padding: 10px 1.4%; 
+    font-size: 20px;
+}
+.item{
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+}
+.item:hover{
+    border-bottom: 1px solid #56D9D4;
+}
 #language{
     background: none;
     color: white;
     outline: none;
     border: none;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 22px;
+    line-height: 30px;
+    font-family:'Larsseit';
+}
+#language:hover{
+    cursor: pointer;
 }
 #language option{
     color: black;
@@ -72,12 +120,19 @@ export default {
     line-height: 15px;
     width: fit-content;
 }
+#language option span{
+    border: 2px solid red;
+}
 #language-mob{
     background: none;
     color: black;
     outline: none;
     border: none;
 }
+.phone-logo{
+    margin-right: -15px;
+}
+
 .language-bar-mob{
     display: none;
 }
@@ -94,7 +149,7 @@ export default {
     display: none;
 }
 .main-nav li {
-    font-family: 'Larsseit';
+    font-family: 'larsseit-light';
     display: inline-block;
     font-size: 22px;
     margin-left: 20px;
@@ -131,7 +186,7 @@ export default {
     padding-top: 20px;
 }
 .main-text{
-    font-family: 'BigCaslon';
+    font-family: 'BigCaslonMedium';
     letter-spacing: 3px;
     float: left;
     font-size: 35px;
@@ -149,13 +204,23 @@ export default {
     color: black;
 }
 
-
+@media(max-width: 1440px){
+    .main-nav li{
+        font-size: 20px;
+        margin-left: 15px;
+    }
+    .main-text{
+     font-size: 30px;
+     margin-left: 10px;
+    }
+}
 @media (max-width: 1366px){
  .main-nav li{
         font-size: 20px;
         margin-left: 10px;
         /* color: blue; */
     }
+
 }
 @media (max-width: 1280px)
 {

@@ -26,9 +26,7 @@ export default   {
   .then((response) => {
     // handle success
     this.roomList = response.data
-    //rooms.primary_image
-    // console.log(this.roomList)
-    // console.log(this.roomList);
+
   })
   },
     methods: {
@@ -44,16 +42,16 @@ export default   {
     font-size: 18px;
     margin-top: 20px;
     float: right;
-    border-bottom: 1px solid #56D9D4;
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
 }
 .button-div:hover{
     cursor: pointer;
+    border-bottom: 1px solid #56D9D4;
 }
 .content{
     line-height: 27px;
     font-size: 20px;
     font-family: 'Larsseit';
-    
 }
 .title{
     line-height: 40px;

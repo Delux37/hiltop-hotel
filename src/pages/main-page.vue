@@ -30,6 +30,7 @@ export default {
     return {
     }
   },
+
 }
 </script>
 <style>
@@ -45,6 +46,7 @@ html{
     font-weight: 300;
     text-rendering: optimizeLegibility;
 }
+
 @media (max-width: 768px) {
   #header{
     position: relative;

@@ -1,6 +1,6 @@
 <template>
    <div>
-    <div class="backdrop"></div>
+    <div class="backdrop" @click="$emit('close')"></div>
     <transition name="modal">
         <dialog open>
            <slot></slot>
@@ -25,8 +25,9 @@ dialog {
   position: fixed;
   /* overflow: hidden; */
   width: 70%;
+  height: 50%;
   left: calc(50% - 35%);
-  top: 20%;
+  top: calc(50% - 35%);
   margin: 0;
   padding: 0;
   z-index: 701;
