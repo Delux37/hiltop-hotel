@@ -1,11 +1,11 @@
 <template>
-    <div class="container">
-        <div class="left-container">
-            <div class="content-container">
-                <div class="header-text">
+    <div class="container" :class="{chessPrincipleContainer: index % 2 == 1}">
+        <div class="left-container" >
+            <div class="content-container" :class="{chessPrincipleContent: index % 2 == 1}">
+                <div class="header-text" :class="{geoTitle: language !== 'en'}" >
                     <h1> {{ title }}</h1>
                 </div>
-                <div class="paragraph-text">
+                <div class="paragraph-text" :class="{geoDescription: language !== 'en'}">
                     <p v-html="description">
                     </p>
                 </div>
@@ -26,11 +26,10 @@
 </template>
 
 <script>
-import axios from 'axios'
 import carousel from '../UI/carousel.vue'
 import carouselSlide from '../UI/carousel-slide.vue'
 export default {
-    props: ['title', 'description', 'images'],
+    props: ['title', 'description', 'images', 'index'],
     components: {carousel, carouselSlide},
     data() {
         return {
@@ -38,19 +37,11 @@ export default {
             visibleSlide: 0,
         }
     },
-mounted() {
-  axios.get('https://www.hilltop.ge/api/slider/')
-  .then((response) => {
-    // handle success
-    this.test = response.data;
-    // console.log(this.roomList);
-  })
-  },
     computed: {
-      slidesLen(){
-          return this.test.length
-      },
-  },
+    language() {
+        return this.$store.getters.getGlobalLanguage;
+    },
+  }
 }
 </script>
 
@@ -83,7 +74,7 @@ height: 100%;
 .content-container{
 background-color: white;
 border-left: 1px solid #56D9D4;;
-width: 28%;
+width: 35%;
 overflow: hidden;
 position: absolute;
 left: 3%;
@@ -92,11 +83,13 @@ overflow: hidden;
 box-shadow: 1px 1px 5px rgba(116, 116, 116, 0.637);
 z-index: 2;
 }
+
 .left-container {
 width: 22%;
 display: flex;
 align-items: center;
 }
+
 .paragraph-text{
     width: 88%;
     margin: 0 auto;
@@ -108,18 +101,42 @@ align-items: center;
 }
 .header-text{
     width: 100%;
-    margin: 50px 0 60px 30px;
+    margin: 50px 20px 60px 30px;
     /* display: flex;
     justify-content: center; */
 }
 .header-text h1{
     font-family: 'BigCaslonMedium';
-    font-weight: 100;
     font-size: 30px;
     color: #464646;
 }
+.geoTitle h1{
+    font-family: 'Rioni';
+    margin-right: 30px;
+    line-height: 57px;
+    font-size: 50px;
+}
+.geoDescription p{
+    font-family: 'Nateli';
+    font-size: 20px;
+}
+.chessPrincipleContainer{
+    flex-direction: row-reverse;
+}
+.chessPrincipleContent{
+    position: absolute;
+    border-left: none;
+    left: 61%;
+    border-right: 1px solid #56D9D4;;
+}
+@media (max-width: 1660px){
+.chessPrincipleContent{
+    left: 60.5%;
+}
+}
 
 @media (max-width: 1366px){
+
 .container{
     height: 700px;
 }
@@ -132,6 +149,12 @@ align-items: center;
 }
 .paragraph-text{
     font-size: 16px;
+}
+}
+
+@media(max-width: 1280px){
+    .chessPrincipleContent{
+    left: 63%;
 }
 }
 @media (max-width: 768px){
@@ -151,19 +174,13 @@ align-items: center;
     /* height: 100%; */
 }
 .content-container{
-    /* border: 2px solid green; */
     position: static;
-    /* display: block; */
-    /* width: 100%; */
-    /* height: 100%; */
     overflow: hidden;
     margin: 0;
     margin-top: -150px;
-    /* margin-bottom: 0; */
     margin-left: 30px;
     margin-right: 10px;
     width: 100%;
-    /* height: 100%; */
 
 }
 .header-text h1{

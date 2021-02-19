@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div class="header">
-            About us
+        <div class="header" :class="{geoHeader: language !== 'en'}">
+            {{ aboutUs }}
         </div>
-        <div class="content" v-html="about.description">
+        <div class="content" :class="{geoContent: language !== 'en'}" v-html="about.description">
         </div>
     </div>
 </template>
@@ -15,7 +15,10 @@ export default {
       },
     language(){
           return this.$store.getters.getGlobalLanguage;
-      }
+      },
+    aboutUs(){
+        return this.$store.getters.dynamicNav.aboutUs;
+    }
     },
     mounted() {
     this.$store.dispatch('about');
@@ -43,6 +46,16 @@ export default {
     margin: 15px auto;
     line-height: 26px;
     font-size: 22px;
+}
+.geoHeader{ 
+    font-family: 'ArialCaps';
+    font-size: 40px;
+    line-height: 45px;
+}
+.geoContent{
+    font-family: 'Nateli';
+    font-size: 25px;
+    line-height: 30px;
 }
 @media (max-width: 768px){
     .header{

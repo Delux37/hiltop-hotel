@@ -1,8 +1,9 @@
 <template>
     <section>
         <restoraunt-content
-        v-for="service in serviceList"
+        v-for="(service, index) in serviceList"
         :key="service.id"
+        :index = "index"
         :title="service.title"
         :description="service.description"
         :images="service.images"

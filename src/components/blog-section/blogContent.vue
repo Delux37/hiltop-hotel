@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="title">BLOG</div>
+        <div class="title">{{ blog }}</div>
         <div class="container">
             <ul>
                 <blog-card
@@ -33,7 +33,10 @@ export default {
     },
     language(){
         return this.$store.getters.getGlobalLanguage;
-      }
+      },
+    blog(){
+        return this.$store.getters.dynamicNav.blogSection;
+    }
     },
     mounted() {
     this.$store.dispatch('getBlog');

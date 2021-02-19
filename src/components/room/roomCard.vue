@@ -6,15 +6,15 @@
             </div>
         </div>
         <div class="content-div">
-            <div class="title"><h1>{{ title }}</h1></div>
-            <div class="amenities">
+            <div class="title" :class="{geoTitle: language !== 'en'}"><h1>{{ title }}</h1></div>
+            <div class="amenities" >
                 <ul>
-                    <li>Price: <strong>${{ price }}</strong></li>
-                    <li>Person: <strong>{{ humanCapacity }}</strong></li>
+                    <li :class="{geoAmenities: language !== 'en'}">{{ navList['price']}}: <strong>${{ price }}</strong></li>
+                    <li :class="{geoAmenities: language !== 'en'}">{{ navList['person']}}: <strong>{{ humanCapacity }}</strong></li>
                 </ul>
             </div>
-            <div class="description"><p v-html="description"></p></div>
-            <div  @click="close" class="viev-gallery-button-container"><h2 class="view-gallery-button">View Gallery</h2></div>
+            <div class="description" :class="{geoDescription: language !== 'en'}"><p v-html="description"></p></div>
+            <div  @click="close" class="viev-gallery-button-container" :class="{geoViewGallery: language !== 'en'}" ><h2 class="view-gallery-button">View Gallery</h2></div>
         </div>
         <teleport to="body">
             <base-model v-if="showIt" @close="close">
@@ -57,14 +57,28 @@ export default {
         this.showIt = !this.showIt;
     },
   },
+  computed: {
+    language() {
+        return this.$store.getters.getGlobalLanguage;
+    },
+    navList(){
+        return this.$store.getters.dynamicNav.roomTypes;
+    }
+  }
 }
 </script>
 
 <style scoped>
+
 .carousel{
     padding: 0;
-    background-color: none;
+    background-color: red;
+    
+    /* background-color: none; */
     background: none;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 .carousel img{
     width: 100%;
@@ -73,6 +87,7 @@ export default {
 .content-box{
     height: 100%;
     padding-right: 3%;
+    display: flex;
 }
 .content-div{
     display: flex;
@@ -159,6 +174,25 @@ strong{
     opacity: 1;
     border-bottom: 1px solid #56D9D4;
     cursor: pointer;
+}
+
+.geoTitle h1{
+    font-family:'Rioni';
+    font-size: 30px;
+    line-height: 34px;
+}
+.geoAmenities{
+    font-family: 'Nateli';
+}  
+.geoDescription{
+    font-family: 'Nateli';
+    font-size: 20px;
+    line-height: 25px;
+}
+.geoViewGallery h2{
+    font-family: 'Arial';
+    font-size: 20px;
+    line-height: 27px;
 }
 @media (max-width: 768px){
 .content-box{

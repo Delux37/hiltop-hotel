@@ -1,17 +1,23 @@
 <template>
     <div class="slider-text-box">
-        <h1>{{title}}</h1>
-        <p>{{subTitle}}</p>
+        <h1 :class="{geoTitle: language !== 'en'}">{{title}}</h1>
+        <p :class="{geoSubtitle: language !== 'en'}">{{subTitle}}</p>
     </div>
 </template>
 
 <script>
 export default {
-    props:['title', 'subTitle']
+    props:['title', 'subTitle', 'language']
 }
 </script>
 
 <style scoped>
+.geoTitle{
+    font-family: 'Rioni';
+}
+.geoSubtitle{
+    font-family: "Rioni"
+}
 .slider-text-box{
     position: absolute;
     /* top: 75%; */

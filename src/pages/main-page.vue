@@ -1,11 +1,11 @@
 <template>
   <div>
-    <header-page id="header"></header-page>
-    <room-types id="roomTypes"></room-types>
-    <additional-section></additional-section>
-    <about-us></about-us>
-    <blog-content></blog-content>
-    <contact-section></contact-section>
+    <header-page :id="navList[0]"></header-page>
+    <room-types :id="navList[1]"></room-types>
+    <additional-section :id="navList[2]"></additional-section>
+    <about-us :id="navList[3]"></about-us>
+    <blog-content :id="navList[4]"></blog-content>
+    <contact-section :id="navList[5]"></contact-section>
   </div>
 </template>
 
@@ -26,10 +26,24 @@ export default {
     blogContent,
     contactSection,
   },
-  data() {
-    return {
-    }
-  },
+
+  //   created () {
+  //   window.addEventListener('scroll', this.handleScroll);
+  // },
+  // unmounted () {
+  //   window.removeEventListener('scroll', this.handleScroll);
+  // },
+  // methods: {
+  //   handleScroll (event) {
+  //     // Any code to be executed when the window is scrolled
+  //     console.log(event);
+  // }
+  // },
+  computed: {
+      navList(){
+            return this.$store.getters.dynamicNav.navBar;
+      }
+  }
 
 }
 </script>

@@ -20,6 +20,62 @@ const store = createStore({
       globalLanguage : 'en',
       isMobileNavBarShown: false,
       direction: '',
+      dynamicMenu: [
+        {
+          id : 'ka',
+          navBar: ['მენიუ', 'ოთახის ტიპები', 'სერვისები', 'ჩვენს შესახებ', 'ბლოგი', 'კონტაქტი'],
+          roomTypes: {
+            roomTypes: 'ოთახის ტიპები',
+            price: 'ფასი',
+            person: 'პერსონა'
+          },
+          aboutUs: 'ჩვენს შესახებ',
+          blogSection: 'ბლოგი',
+          contact: 
+          {
+              contact: 'კონტაქტი',
+              phone: 'ტელეფონი',
+              email: 'ფოსტა',
+              adress: 'მისამართი'
+          }
+        },
+        {
+          id: 'en',
+          navBar: ['Home', 'Room types', 'Service', 'About us', 'Blog', 'Contact'],
+          roomTypes: {
+            roomTypes: 'Room Types',
+            price: 'Price',
+            person: 'Person'
+          },
+          aboutUs: 'About us',
+          blogSection: 'Blog',
+          contact: 
+          {
+              contact: 'Contact',
+              phone: 'Phone',
+              email: 'E-mail',
+              address: 'Address'
+          }
+        },
+        {
+          id: 'ru',
+          navBar: ['МЕНЮ', 'ТИПЫ НОМЕРОВ', 'СЕРВИСЫ', 'О НАС', 'БЛОГ', 'КОНТАКТ'],
+          roomTypes: {
+            roomTypes: 'ТИПЫ НОМЕРОВ',
+            price: 'ЦЕНА',
+            person: 'ВМЕСТИМОСТЬ'
+          },
+          aboutUs: 'О НАС',
+          blogSection: 'БЛОГ',
+          contact: 
+          {
+              contact: 'контакт',
+              phone: 'ТЕЛЕФОН',
+              email: 'ПОЧТА',
+              address: 'ПОЧТА'
+          }
+        }
+      ]
     }
   },
   mutations: {
@@ -72,6 +128,13 @@ const store = createStore({
       }else if(state.globalLanguage === 'ka'){
         temp = 'GEO'
         return temp
+      }
+    },
+    dynamicNav(state){
+      for(const key in state.dynamicMenu){
+        if(state.dynamicMenu[key].id === state.globalLanguage){
+          return state.dynamicMenu[key]
+        }
       }
     }
   }

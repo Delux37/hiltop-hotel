@@ -2,12 +2,12 @@
     <div class="container">
         <div class="contact-container">
             <div class="contact">
-                CONTACT
+                {{ navList['contact'] }} 
             </div>
             <div class="additonal-info">
-                <p>PHONE: <span>{{ contact.phone }}</span></p>
-                <p>E-MAIL: <span>{{ contact.email }}</span></p>
-                <p>ADRESS: <span>{{ contact.address }}</span></p>
+                <p>{{ navList['phone']}}: <span>{{ contact.phone }}</span></p>
+                <p>{{ navList['email']}}: <span>{{ contact.email }}</span></p>
+                <p>{{ navList['address'] }}: <span>{{ contact.address }}</span></p>
             </div>
         </div>
         <div class="map-container">
@@ -17,20 +17,16 @@
 </template>
 <script>
 export default {
-    data() {
-        return {
-            link: {
-                hash: '#contact'
-            },
-        }
-    },
     computed: {
     contact() {
         return this.$store.getters.contact
       },
     language() {
          return this.$store.getters.getGlobalLanguage;
-    }
+      },
+    navList(){
+        return this.$store.getters.dynamicNav.contact;
+        }
     },
     mounted() {
     this.$store.dispatch('contact');
