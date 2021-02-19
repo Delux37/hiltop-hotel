@@ -17,6 +17,7 @@
             <sliderContent 
             :title="slides.title"
             :subTitle="slides.sub_title"
+            :language =  "language"
             ></sliderContent>
             </carousel-slide>
         </carousel>

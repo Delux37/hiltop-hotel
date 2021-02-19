@@ -9,11 +9,11 @@
                 <div class="text-div-container">
                     <div class="header-div">
                         <div @click="$router.push({ name: 'homePage' })" class="back-button-pc">
-                            <a href="#roomTypes">
+                            <a :href="'#' + blogSection[4]">
                              <img src="../assets/back-black-btn.svg"/> 
                             </a>
                         </div>
-                        <div class="title-div">{{ blogDetail.title }}</div>
+                        <div class="title-div" :class="{geoTitle: language !== 'en'}">{{ blogDetail.title }}</div>
                         <div class="date-tag-div">
                             <p> {{ blogDetail.date }} </p>
                             <ul>
@@ -23,7 +23,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="content-div">
+                    <div class="content-div" :class="{geoDescription: language !== 'en'}">
                         <p v-html="blogDetail.description"></p>
                     </div> 
                     <div class="date-tag-div mobile hide">
@@ -52,6 +52,9 @@ computed:{
       },
       language() {
         return this.$store.getters.getGlobalLanguage;
+      },
+      blogSection(){
+        return this.$store.getters.dynamicNav.navBar;
       }
     },
   mounted() {
@@ -149,7 +152,8 @@ computed:{
     position: relative;
     width: 100%;
     height: fit-content;
-    align-self: center;
+    max-height: 70%;
+    /* align-self: center; */
     z-index: 20;
     right: 7%;
     font-size: 17px;
@@ -160,8 +164,17 @@ computed:{
     /* border-right: 1px solid #56D9D4; */
     box-shadow: 1px 5px 5px rgba(116, 116, 116, 0.637);
     background-color: #fff;
-    overflow: hidden;
-
+    /* overflow: scroll; */
+}
+.geoTitle{
+    font-family: 'Rioni';
+    font-size: 30px;
+    line-height: 34px;
+}
+.geoDescription{
+    font-family: 'Nateli';
+    font-size: 20px;
+    line-height: 25px;
 }
 @media (max-width:768px){
     .back-button-pc{

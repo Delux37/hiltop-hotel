@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div id="header"><h1>Room Types</h1></div>
+        <div id="header"><h1>{{ navList['roomTypes'] }}</h1></div>
         <div class="roomCard" v-if="roomList">
             <ul>
                 <room-card
@@ -30,6 +30,9 @@ export default {
       },
     language() {
         return this.$store.getters.getGlobalLanguage;
+    },
+    navList(){
+        return this.$store.getters.dynamicNav.roomTypes;
     }
     },
     mounted() {

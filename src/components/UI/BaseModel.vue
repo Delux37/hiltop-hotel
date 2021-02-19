@@ -25,15 +25,32 @@ dialog {
   position: fixed;
   /* overflow: hidden; */
   width: 70%;
-  height: 50%;
-  left: calc(50% - 35%);
-  top: calc(50% - 35%);
-  margin: 0;
-  padding: 0;
+  height: 65vh;
+  top: calc(50vh - 30vh);
+  margin: 0 auto;
   z-index: 701;
   border: none;
   
   /* animation: modal 0.3s ease-out forwards; */
+}
+
+@media(max-width: 1660px){
+  dialog {
+    top: 17%;
+  }
+}
+
+@media(max-width: 1330px){
+    dialog {
+    top: 12%;
+  }
+}
+
+
+@media (max-width: 1280px){
+      dialog {
+    top: 12%;
+  }
 }
 
 </style>

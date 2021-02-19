@@ -5,6 +5,25 @@
 <script>
 </script>
 <style>
+@font-face{
+    font-family: 'ArialCaps';
+    src: url(fonts/bpg-arial-caps-webfont.ttf);
+}
+
+@font-face{
+    font-family: 'Arial';
+    src: url(fonts/bpg-arial-webfont.ttf);
+}
+
+@font-face{
+    font-family: 'Nateli';
+    src: url(fonts/bpg-nateli-webfont.ttf),
+}
+
+@font-face{
+    font-family: 'Rioni';
+    src: url(fonts/bpg-rioni-contrast-webfont.ttf),
+}
 @font-face {
     font-family: 'Larsseit';
     src: url(fonts/Larsseit.otf),
@@ -48,29 +67,6 @@ html{
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
 }
-
-/* 
-export const req = axios.create({
-    baseURL: `https://www.hilltop.ge/api/`,
-    headers: {
-        'Accept-Language' : 'lang'
-    }
-})
-
-async fetchSliderList({commit}, lang){
-            const { data } = await req.get('slider/', {
-                headers : {
-                    'Accept-Language' : lang
-                }
-            })
-            commit('setSliderList', data)
-        }
-
-    const instance = axios.create({
-  baseURL: 'https://some-domain.com/api/',
-  timeout: 1000,
-  headers: {'X-Custom-Header': 'foobar'}
-}); */
 </style>
 
 
